@@ -15,20 +15,28 @@ public class DialogueManager : Singleton<DialogueManager> {
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            if(typingText)
-            {
-                StopCoroutine(typeRoutine);
-            }
-            if(lineIndex >= 0)
-            {
-                typeRoutine = TypeText(test.playerLines[lineIndex]);
-                StartCoroutine(typeRoutine);
-                IncrementLineIndex();
-            }
+        //if(InputHandler.Instance.Interact)
+        //{
+        //    Debug.Log("INTERACTING"); 
+        //}
+
+        Debug.Log(InputHandler.Instance.MoveAxes); 
+
+
+        //if(Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    if(typingText)
+        //    {
+        //        StopCoroutine(typeRoutine);
+        //    }
+        //    if(lineIndex >= 0)
+        //    {
+        //        typeRoutine = TypeText(test.playerLines[lineIndex]);
+        //        StartCoroutine(typeRoutine);
+        //        IncrementLineIndex();
+        //    }
             
-        }
+        //}
     }
 
     void IncrementLineIndex()
