@@ -33,7 +33,15 @@ public class Player : MonoBehaviour {
         }
 
         anim.SetInteger("State", (int)currentState);
-        anim.SetFloat("SpeedMultiplier", 1 + (moveSpeed / maxMoveSpeed));
+
+        float animMultiplier = 1 + (moveSpeed / maxMoveSpeed);
+
+        if(animMultiplier < 0.3f)
+        {
+            animMultiplier = 0.3f;
+        }
+
+        anim.SetFloat("SpeedMultiplier", animMultiplier);
     }
 
     private void UpdateMovement()
@@ -78,25 +86,12 @@ public class Player : MonoBehaviour {
                 }
                 else if (transform.position.x > rightBound || transform.position.x < leftBound)
                 {
-                    if (moveSpeed > 0)
-                    {
-                        moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
-
-                        if (moveSpeed < 0)
-                        {
-                            moveSpeed = 0;
-                        }
-                    }
-                    else if (moveSpeed < 0)
-                    {
-                        moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
-
-                        if (moveSpeed > 0)
-                        {
-                            moveSpeed = 0;
-                        }
-                    }
+                    Decelerate();
                 }
+            }
+            else
+            {
+                Decelerate();
             }
 
             if (movement.y > 0)
@@ -141,27 +136,32 @@ public class Player : MonoBehaviour {
                 }
             }
 
-            if (moveSpeed > 0 && transform.position.x >= rightBound)
-            {
-                moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
-
-                if (moveSpeed < 0)
-                {
-                    moveSpeed = 0;
-                }
-            }
-            else if (moveSpeed < 0 && transform.position.x <= leftBound)
-            {
-                moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
-
-                if (moveSpeed > 0)
-                {
-                    moveSpeed = 0;
-                }
-            }
+            Decelerate();
         }
 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+    }
+
+    public void Decelerate()
+    {
+        if (moveSpeed > 0)
+        {
+            moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
+
+            if (moveSpeed < 0)
+            {
+                moveSpeed = 0;
+            }
+        }
+        else if (moveSpeed < 0)
+        {
+            moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
+
+            if (moveSpeed > 0)
+            {
+                moveSpeed = 0;
+            }
+        }
     }
 
     public CharacterState State
