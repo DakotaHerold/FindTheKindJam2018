@@ -4,38 +4,48 @@ using UnityEngine;
 
 public enum CharacterState
 {
+
+    Idle,
     SlowRun,
     NormalRun,
     FastRun,
     MoveUp,
-    MoveDown,
+    MoveDown
 }
 
-[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
 public class Player : MonoBehaviour {
 
     [SerializeField]
-    private float maxMoveSpeed, acceleration, decelerationMultiplier, laneTime, laneHeight;
+    private float maxMoveSpeed, acceleration, decelerationMultiplier, laneTime, laneHeight, rightBound, leftBound;
     private float moveSpeed = 0;
     private bool switchingLanes;
     [SerializeField]
     private int lane;
-    private CharacterState currentState = CharacterState.NormalRun;
+    private CharacterState currentState = CharacterState.Idle;
+    private Animator anim;
 
 	// Use this for initialization
 	void Start () {
-	}
+        anim = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        UpdateMovement();
+        if(currentState != CharacterState.Idle)
+        {
+            UpdateMovement();
+        }
+
+        anim.SetInteger("State", (int)currentState);
+        anim.SetFloat("SpeedMultiplier", 1 + (moveSpeed / maxMoveSpeed));
     }
 
     private void UpdateMovement()
     {
         if (!switchingLanes)
         {
-            if (Input.GetKey(KeyCode.D) && transform.position.x < 0)
+            if (Input.GetKey(KeyCode.D) && transform.position.x < rightBound)
             {
                 currentState = CharacterState.FastRun;
 
@@ -53,7 +63,7 @@ public class Player : MonoBehaviour {
                     moveSpeed = maxMoveSpeed;
                 }
             }
-            else if (Input.GetKey(KeyCode.A) && transform.position.x > -5)
+            else if (Input.GetKey(KeyCode.A) && transform.position.x > leftBound)
             {
                 currentState = CharacterState.SlowRun;
 
@@ -143,9 +153,8 @@ public class Player : MonoBehaviour {
                 }
             }
 
-            if (moveSpeed > 0)
+            if (moveSpeed > 0 && transform.position.x >= rightBound)
             {
-                currentState = CharacterState.SlowRun;
                 moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
 
                 if (moveSpeed < 0)
@@ -153,9 +162,8 @@ public class Player : MonoBehaviour {
                     moveSpeed = 0;
                 }
             }
-            else if (moveSpeed < 0)
+            else if (moveSpeed < 0 && transform.position.x <= leftBound)
             {
-                currentState = CharacterState.FastRun;
                 moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
 
                 if (moveSpeed > 0)
@@ -163,12 +171,20 @@ public class Player : MonoBehaviour {
                     moveSpeed = 0;
                 }
             }
-            else
-            {
-                currentState = CharacterState.NormalRun;
-            }
         }
 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+    }
+
+    public CharacterState State
+    {
+        get
+        {
+            return currentState;
+        }
+        set
+        {
+            currentState = value;
+        }
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Person : MonoBehaviour {
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        if(collision.gameObject.tag == "Player")
+        if(other.tag == "Player")
         {
-            Debug.Log("Player has collided with " + name);
+            //TODO start a conversation
         }
     }
 }
