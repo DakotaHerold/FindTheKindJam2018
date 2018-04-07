@@ -57,7 +57,7 @@ public class DialogueManager : Singleton<DialogueManager> {
         Vector3 position = boxText.transform.position;
         RectTransform buttonTransform = optionButtons[0].gameObject.transform as RectTransform;
         float offset = buttonTransform.sizeDelta.x/2; 
-        position.x -= (offset * Mathf.RoundToInt((numButtons/2)));
+        position.x -= (offset * (numButtons / 2) ); 
         position.y -= buttonTransform.sizeDelta.y - 15; 
         offset += 10; 
         foreach (Button b in optionButtons)
@@ -122,7 +122,6 @@ public class DialogueManager : Singleton<DialogueManager> {
             }
             else
             {
-                // TODO, set dialogue source images 
                 typeRoutine = TypeText(textToType);
                 StartCoroutine(typeRoutine);
             }
@@ -157,11 +156,14 @@ public class DialogueManager : Singleton<DialogueManager> {
                     }
 
                 }
-                else //if(activeDialogue.choices.Count < 1)
+                else 
                 {
-                    EndConversation(); 
+                    // Check if NPC asked for coins 
+                    if (activeDialogue.dialogueLines[dialogueLineIndex-1].moneyCost > 0)
+                        GameManager.Instance.NumCoins -= activeDialogue.dialogueLines[dialogueLineIndex-1].moneyCost; 
                     // No choices, end dialogue!
-                    //Debug.Log("End Dialogue!"); 
+                    EndConversation(); 
+                    
                 }
                 
             }

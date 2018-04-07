@@ -18,7 +18,7 @@ public class GameManager : Singleton<GameManager> {
     private DialogueManager dialogueManager;
 
     private int numCoins = 0; 
-    public int NumCoins { get { return numCoins; } }
+    public int NumCoins { get { return numCoins; } set { numCoins = value; } }
 
     private float timer; 
     public float Timer { get { return timer; } }

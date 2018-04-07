@@ -26,7 +26,8 @@ public class DialogueData : ScriptableObject {
         [TextArea]
         public string line;
         public DialogueSource source;
-        public Sprite characterPortrait; 
+        public Sprite characterPortrait;
+        public int moneyCost; 
     }
     
     public List<DialoguePiece> dialogueLines;
@@ -34,5 +35,25 @@ public class DialogueData : ScriptableObject {
     public bool isRoot; 
     public List<DialogueData> choices;
     
+    public int GetMoneyCost()
+    {
+        int result = 0;
 
+        foreach(DialoguePiece dialogue in dialogueLines)
+        {
+            if (dialogue.moneyCost > result)
+                result = dialogue.moneyCost; 
+        }
+
+        foreach(DialogueData data in choices)
+        {
+            foreach (DialoguePiece dialogue in data.dialogueLines)
+            {
+                if (dialogue.moneyCost > result)
+                    result = dialogue.moneyCost;
+            }
+        }
+
+        return result; 
+    }
 }
