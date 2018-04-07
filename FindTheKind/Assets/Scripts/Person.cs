@@ -9,6 +9,7 @@ public class Person : MonoBehaviour {
         if(other.tag == "Player")
         {
             //TODO start a conversation
+            other.GetComponent<Player>().State = CharacterState.Idle;
         }
     }
 }
