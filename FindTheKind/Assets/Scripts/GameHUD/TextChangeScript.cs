@@ -34,9 +34,9 @@ public class TextChangeScript : MonoBehaviour {
                     uiText.text = GameManager.Instance.NumCoins.ToString(); 
                 break;
             case TEXT_DATA_TYPE.LEVEL:
-                //string str = GameManager.Instance.Level.ToString() + "'s";
-                //if (uiText.text != str)
-                //    uiText.text = "test"; //str;
+                string str = GameManager.Instance.Level.ToString() + "'s";
+                if (uiText.text != str)
+                    uiText.text = str;
                 break; 
         }
 	}
