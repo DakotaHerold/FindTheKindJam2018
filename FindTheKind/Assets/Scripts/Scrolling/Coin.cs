@@ -2,28 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
 public class Coin : MonoBehaviour {
 
     [SerializeField]
     private int coinValue;
-    private AudioSource source;
-    private LevelManager manager;
+    private SoundClip clip;
+    private SoundManager soundManager;
+    private LevelManager levelManager;
     private Parallax parallax;
 
     private void Start()
     {
-        source = GetComponent<AudioSource>();
-        manager = GetComponentInParent<LevelManager>();
+        levelManager = GetComponentInParent<LevelManager>();
+        soundManager = levelManager.soundManager;
         parallax = GetComponentInParent<Parallax>();
+        clip = SoundClip.CollectCoin;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
         {
-            manager.TotalCoins += coinValue;
-            source.Play();
+            levelManager.TotalCoins += coinValue;
+            soundManager.Play(clip);
             parallax.RemoveSprite(this.gameObject);
         }
     }
