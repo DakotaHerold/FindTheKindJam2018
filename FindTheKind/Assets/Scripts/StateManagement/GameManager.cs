@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
 
-    public const float LEVEL_TIME = 1200; 
+    public const float LEVEL_TIME = 120; 
 
     enum GAME_STATE
     {
@@ -39,7 +39,7 @@ public class GameManager : Singleton<GameManager> {
     void Update()
     {
         if (gameState == GAME_STATE.Running)
-            timer -= Time.deltaTime; 
+            timer -= Time.deltaTime;
     }
 
     public void StartGame()
@@ -59,6 +59,7 @@ public class GameManager : Singleton<GameManager> {
 
     public void GoToNextLevel()
     {
+        timer = LEVEL_TIME; 
         level += 10; 
         if(level > 60)
         {
@@ -70,7 +71,7 @@ public class GameManager : Singleton<GameManager> {
 
     private string GetTimerString(float timer)
     {
-        string timerStr = ""; 
+        string timerStr = "";
         float minutes = Mathf.Floor(timer / 60);
         float seconds = Mathf.RoundToInt(timer % 60);
 
@@ -78,10 +79,18 @@ public class GameManager : Singleton<GameManager> {
         {
             timerStr = "0" + minutes.ToString();
         }
+        else
+        {
+            timerStr = minutes.ToString(); 
+        }
         timerStr += ":";
         if (seconds < 10)
         {
             timerStr += "0" + Mathf.RoundToInt(seconds).ToString();
+        }
+        else
+        {
+            timerStr += Mathf.RoundToInt(seconds).ToString();
         }
 
         string result = "Time: " + timerStr; 
