@@ -9,11 +9,13 @@ public class Coin : MonoBehaviour {
     private int coinValue;
     private AudioSource source;
     private LevelManager manager;
+    private Parallax parallax;
 
     private void Start()
     {
         source = GetComponent<AudioSource>();
         manager = GetComponentInParent<LevelManager>();
+        parallax = GetComponentInParent<Parallax>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -22,7 +24,7 @@ public class Coin : MonoBehaviour {
         {
             manager.TotalCoins += coinValue;
             source.Play();
-            Destroy(this.gameObject);
+            parallax.RemoveSprite(this.gameObject);
         }
     }
 }

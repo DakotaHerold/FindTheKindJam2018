@@ -239,6 +239,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1193334562
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1693785745}
+    m_Modifications:
+    - target: {fileID: 4425073190672532, guid: cf41bf97869f4dc468d518572170e76d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425073190672532, guid: cf41bf97869f4dc468d518572170e76d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425073190672532, guid: cf41bf97869f4dc468d518572170e76d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425073190672532, guid: cf41bf97869f4dc468d518572170e76d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425073190672532, guid: cf41bf97869f4dc468d518572170e76d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425073190672532, guid: cf41bf97869f4dc468d518572170e76d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425073190672532, guid: cf41bf97869f4dc468d518572170e76d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4425073190672532, guid: cf41bf97869f4dc468d518572170e76d, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: cf41bf97869f4dc468d518572170e76d, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1693785745 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4690145691117126, guid: ff04c9c0d7c0245498c8c76e3e3b16e6,
+    type: 2}
+  m_PrefabInternal: {fileID: 481676811}
 --- !u!114 &1703497375 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114407542714658764, guid: 7acccb85adef379459fc92df60183204,
