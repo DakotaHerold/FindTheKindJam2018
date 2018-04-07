@@ -58,7 +58,7 @@ public class DialogueManager : Singleton<DialogueManager> {
         RectTransform buttonTransform = optionButtons[0].gameObject.transform as RectTransform;
         float offset = buttonTransform.sizeDelta.x; 
         position.x -= (offset * Mathf.RoundToInt((numButtons/2)));
-        position.y -= buttonTransform.sizeDelta.y - 3; 
+        position.y -= buttonTransform.sizeDelta.y - 5; 
         offset += 10; 
         foreach (Button b in optionButtons)
         {
@@ -82,7 +82,8 @@ public class DialogueManager : Singleton<DialogueManager> {
         DialoguePanel.SetActive(false);
         NPC_PortraitPanel.SetActive(false);
         PC_PortraitPanel.SetActive(false); 
-        activeDialogue = null; 
+        activeDialogue = null;
+        GameManager.Instance.TriggerDialogueEnd(); 
     }
 
     void SetActiveDialogue (DialogueData data)
@@ -178,8 +179,6 @@ public class DialogueManager : Singleton<DialogueManager> {
         SetActiveDialogue(choiceData);
         CycleDialogue();
     }
-
-
 
     IEnumerator TypeText(string message)
     {
