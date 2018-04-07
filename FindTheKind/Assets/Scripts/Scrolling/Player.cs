@@ -5,11 +5,7 @@ using UnityEngine;
 public enum CharacterState
 {
     Idle,
-    SlowRun,
-    NormalRun,
-    FastRun,
-    MoveUp,
-    MoveDown
+    Run
 }
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
@@ -44,84 +40,77 @@ public class Player : MonoBehaviour {
     {
         if (!switchingLanes)
         {
-            if (Input.GetKey(KeyCode.D) && transform.position.x < rightBound)
+            Vector2 movement = InputHandler.Instance.MoveAxes;
+
+            if(movement.x != 0)
             {
-                currentState = CharacterState.FastRun;
-
-                if (moveSpeed > 0)
+                if (movement.x > 0 && transform.position.x < rightBound)
                 {
-                    moveSpeed += acceleration * Time.deltaTime;
-                }
-                else
-                {
-                    moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
-                }
-
-                if (moveSpeed > maxMoveSpeed)
-                {
-                    moveSpeed = maxMoveSpeed;
-                }
-            }
-            else if (Input.GetKey(KeyCode.A) && transform.position.x > leftBound)
-            {
-                currentState = CharacterState.SlowRun;
-
-                if (moveSpeed < 0)
-                {
-                    moveSpeed -= acceleration * Time.deltaTime;
-                }
-                else
-                {
-                    moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
-                }
-
-                if (moveSpeed < maxMoveSpeed * -1)
-                {
-                    moveSpeed = maxMoveSpeed * -1;
-                }
-            }
-            else
-            {
-                if (moveSpeed > 0)
-                {
-                    currentState = CharacterState.SlowRun;
-                    moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
-
-                    if (moveSpeed < 0)
-                    {
-                        moveSpeed = 0;
-                    }
-                }
-                else if (moveSpeed < 0)
-                {
-                    currentState = CharacterState.FastRun;
-                    moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
-
                     if (moveSpeed > 0)
                     {
-                        moveSpeed = 0;
+                        moveSpeed += acceleration * Time.deltaTime;
+                    }
+                    else
+                    {
+                        moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
+                    }
+
+                    if (moveSpeed > maxMoveSpeed)
+                    {
+                        moveSpeed = maxMoveSpeed;
                     }
                 }
-                else
+                else if (movement.x < 0 && transform.position.x > leftBound)
                 {
-                    currentState = CharacterState.NormalRun;
+                    if (moveSpeed < 0)
+                    {
+                        moveSpeed -= acceleration * Time.deltaTime;
+                    }
+                    else
+                    {
+                        moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
+                    }
+
+                    if (moveSpeed < maxMoveSpeed * -1)
+                    {
+                        moveSpeed = maxMoveSpeed * -1;
+                    }
+                }
+                else if (transform.position.x > rightBound || transform.position.x < leftBound)
+                {
+                    if (moveSpeed > 0)
+                    {
+                        moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
+
+                        if (moveSpeed < 0)
+                        {
+                            moveSpeed = 0;
+                        }
+                    }
+                    else if (moveSpeed < 0)
+                    {
+                        moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
+
+                        if (moveSpeed > 0)
+                        {
+                            moveSpeed = 0;
+                        }
+                    }
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.W))
+            if (movement.y > 0)
             {
                 if (lane > 0)
                 {
-                    currentState = CharacterState.MoveUp;
                     switchingLanes = true;
                     lane--;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.S))
+            if (movement.y < 0)
             {
                 if (lane < 2)
                 {
-                    currentState = CharacterState.MoveDown;
                     switchingLanes = true;
                     lane++;
                 }

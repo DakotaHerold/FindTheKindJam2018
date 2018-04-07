@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour {
 	
     public void StartLevel()
     {
-        player.State = CharacterState.NormalRun;
+        player.State = CharacterState.Run;
     }
 
     public void EndLevel()
@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour {
             EndLevel();
         }
 
-        Debug.Log("Player State: " + player.State + " Total Coins: " + totalCoins);
+        //Debug.Log("Player State: " + player.State + " Total Coins: " + totalCoins);
     }
 
     public int TotalCoins

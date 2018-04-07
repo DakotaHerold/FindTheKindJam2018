@@ -265,7 +265,7 @@ MonoBehaviour:
   maxMoveSpeed: 5
   acceleration: 2.5
   decelerationMultiplier: 4
-  laneTime: 0.1
+  laneTime: 0.2
   laneHeight: 1.5
   rightBound: 0
   leftBound: -5
@@ -305,7 +305,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 252158527}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
