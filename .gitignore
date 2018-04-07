@@ -60,3 +60,7 @@ sysinfo.txt
 # Unity3D generated temporary and unnecessary files
 Library/*
 Temp/*
+FindTheKind/.vs/
+FindTheKind/Library/metadata/
+FindTheKind/Library/
+FindTheKind/Temp/
