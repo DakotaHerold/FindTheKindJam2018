@@ -56,9 +56,9 @@ public class DialogueManager : Singleton<DialogueManager> {
         int numButtons = optionButtons.Length; 
         Vector3 position = boxText.transform.position;
         RectTransform buttonTransform = optionButtons[0].gameObject.transform as RectTransform;
-        float offset = buttonTransform.sizeDelta.x; 
+        float offset = buttonTransform.sizeDelta.x/2; 
         position.x -= (offset * Mathf.RoundToInt((numButtons/2)));
-        position.y -= buttonTransform.sizeDelta.y - 5; 
+        position.y -= buttonTransform.sizeDelta.y - 15; 
         offset += 10; 
         foreach (Button b in optionButtons)
         {
