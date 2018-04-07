@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class DialogueManager : Singleton<DialogueManager> {
     public float letterPause = 0.2f;
     public GameObject NamePanel;
-    public GameObject DialoguePanel; 
-    public Text boxText;
+    public GameObject DialoguePanel;
+    public GameObject PC_PortraitPanel; 
+    public GameObject NPC_PortraitPanel; 
+
+    private Text boxText;
+    private Image NPC_Image; 
 
     private Button[] optionButtons; 
-    //public DialogueData test;
-
-<<<<<<< HEAD
+    
     private DialogueSource activeSpeaker; 
-=======
-    //private DialogueSource
->>>>>>> 949bb1a4eaabf4f67b6d627c2e2bf696d3fb7315
+
     private int dialogueLineIndex = 0; 
     private bool typingText = false;
 
@@ -24,10 +24,13 @@ public class DialogueManager : Singleton<DialogueManager> {
 
     DialogueData activeDialogue;
 
+    // Temp
     public DialogueData testDialogue; 
 
     private void Start()
     {
+        boxText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        NPC_Image = NPC_PortraitPanel.transform.GetChild(0).GetComponent<Image>(); 
         optionButtons = transform.GetChild(0).GetComponentsInChildren<Button>();
         OffsetButtons();
         NamePanel.SetActive(false);
@@ -77,6 +80,8 @@ public class DialogueManager : Singleton<DialogueManager> {
     {
         NamePanel.SetActive(false);
         DialoguePanel.SetActive(false);
+        NPC_PortraitPanel.SetActive(false);
+        PC_PortraitPanel.SetActive(false); 
         activeDialogue = null; 
     }
 
@@ -90,8 +95,21 @@ public class DialogueManager : Singleton<DialogueManager> {
     {
         if(dialogueLineIndex < activeDialogue.dialogueLines.Count)
         {
-            activeSpeaker = activeDialogue.dialogueLines[dialogueLineIndex].source; 
-            NamePanel.GetComponentInChildren<Text>().text = activeDialogue.dialogueLines[dialogueLineIndex].source.ToString();
+            activeSpeaker = activeDialogue.dialogueLines[dialogueLineIndex].source;
+            if(activeDialogue.dialogueLines[dialogueLineIndex].source != DialogueSource.Business_Man)
+            {
+                PC_PortraitPanel.SetActive(false); 
+                NPC_PortraitPanel.SetActive(true); 
+                NPC_Image.sprite = activeDialogue.dialogueLines[dialogueLineIndex].characterPortrait;
+            }
+            else
+            {
+                NPC_PortraitPanel.SetActive(false);
+                PC_PortraitPanel.SetActive(true); 
+            }
+            string nameString = activeDialogue.dialogueLines[dialogueLineIndex].source.ToString();
+            nameString = nameString.Replace('_', ' '); 
+            NamePanel.GetComponentInChildren<Text>().text = nameString;
             string textToType  = activeDialogue.dialogueLines[dialogueLineIndex].line; 
 
             if (typingText)
