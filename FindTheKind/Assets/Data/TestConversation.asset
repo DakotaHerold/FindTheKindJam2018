@@ -18,9 +18,10 @@ MonoBehaviour:
     source: 1
   - line: Cool!
     source: 0
-  - line: Can you help me?
+  - line: Blah
     source: 1
-  playerChoice: Will you help me?
+  playerChoice: Can you help me?
+  isRoot: 1
   choices:
   - {fileID: 11400000, guid: 09f35f3ada175c2418b21acb033563c4, type: 2}
   - {fileID: 11400000, guid: bcb96b510aae05748a01135aa8dccdfc, type: 2}

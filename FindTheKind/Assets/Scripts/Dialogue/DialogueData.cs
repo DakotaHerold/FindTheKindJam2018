@@ -24,6 +24,7 @@ public class DialogueData : ScriptableObject {
     
     public List<DialoguePiece> dialogueLines;
     public string playerChoice; // To display choice to player
+    public bool isRoot; 
     public List<DialogueData> choices;
     
 
