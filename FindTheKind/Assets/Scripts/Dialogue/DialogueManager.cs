@@ -8,7 +8,7 @@ public class DialogueManager : Singleton<DialogueManager> {
     public Text uiText;
     //public DialogueData test;
 
-    private DialogueSource
+    //private DialogueSource
     private int dialogueLineIndex = 0; 
     private bool typingText = false;
 

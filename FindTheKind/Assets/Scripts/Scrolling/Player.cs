@@ -136,7 +136,10 @@ public class Player : MonoBehaviour {
                 }
             }
 
-            Decelerate();
+            if (transform.position.x > rightBound || transform.position.x < leftBound)
+            {
+                Decelerate();
+            }
         }
 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);

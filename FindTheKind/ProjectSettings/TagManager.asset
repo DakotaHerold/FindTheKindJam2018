@@ -4,16 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
   - Chunk
-=======
-  - Person
-  - Coin
-<<<<<<< HEAD
-  - Background
-=======
->>>>>>> 5ad03a0ce80ae994299a0aeb11c60290f4f08627
->>>>>>> 47c33a53e7a1f4ace5dc05b97ff6620dc418fa0b
   layers:
   - Default
   - TransparentFX

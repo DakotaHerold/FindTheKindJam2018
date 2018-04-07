@@ -6,7 +6,6 @@ public class Parallax : MonoBehaviour {
     
     private List<GameObject> backgrounds, spriteObjects;
     private GameObject lastBackground;
-    [SerializeField]
     private float screenEdge, scrollSpeed;
 
     // Use this for initialization
@@ -57,6 +56,16 @@ public class Parallax : MonoBehaviour {
             }
         }
 	}
+
+    public void setScrollSpeed(float newSpeed)
+    {
+        scrollSpeed = newSpeed;
+    }
+
+    public void setScreenEdge(float edge)
+    {
+        screenEdge = edge;
+    }
 
     private int addCycle(int max, int value)
     {

@@ -7,15 +7,37 @@ public class LevelManager : MonoBehaviour {
     private int totalCoins;
     [SerializeField]
     private Player player;
-	
+    [SerializeField]
+    private float speedChange, screenEdge;
+    [SerializeField]
+    private Parallax[] parallaxLayers;
+
+    private void Start()
+    {
+        for (int i = 0; i < parallaxLayers.Length; i++)
+        {
+            parallaxLayers[i].setScreenEdge(screenEdge);
+        }
+    }
+
     public void StartLevel()
     {
         player.State = CharacterState.Run;
+
+        for(int i = 0; i < parallaxLayers.Length; i++)
+        {
+            parallaxLayers[i].setScrollSpeed((i * speedChange) + 5);
+        }
     }
 
     public void EndLevel()
     {
         player.State = CharacterState.Idle;
+
+        for (int i = 0; i < parallaxLayers.Length; i++)
+        {
+            parallaxLayers[i].setScrollSpeed(0);
+        }
     }
 
 	// Update is called once per frame
@@ -29,8 +51,6 @@ public class LevelManager : MonoBehaviour {
         {
             EndLevel();
         }
-
-        //Debug.Log("Player State: " + player.State + " Total Coins: " + totalCoins);
     }
 
     public int TotalCoins
