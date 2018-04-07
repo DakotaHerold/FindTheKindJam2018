@@ -5,46 +5,108 @@ using UnityEngine.UI;
 
 public class DialogueManager : Singleton<DialogueManager> {
     public float letterPause = 0.2f;
-    public Text uiText; 
-    public DialogueData test;
+    public Text uiText;
+    //public DialogueData test;
 
-    int lineIndex = 0;
-    bool typingText = false;
+    private DialogueSource
+    private int dialogueLineIndex = 0; 
+    private bool typingText = false;
 
-    IEnumerator typeRoutine; 
+    private IEnumerator typeRoutine;
+
+    DialogueData activeDialogue;
+
+    public DialogueData testDialogue; 
+
+    private void Start()
+    {
+        StartConversation(testDialogue); 
+    }
 
     private void Update()
     {
-        //if(InputHandler.Instance.Interact)
+
+        //if (InputHandler.Instance.Interact)
         //{
-        //    Debug.Log("INTERACTING"); 
-        //}
-
-        Debug.Log(InputHandler.Instance.MoveAxes); 
-
-
-        //if(Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    if(typingText)
+        //    if (typingText)
         //    {
         //        StopCoroutine(typeRoutine);
+        //        if (lineIndex != -1)
+        //            uiText.text = test.playerLines[lineIndex - 1];
+        //        else
+        //            uiText.text = test.playerLines[test.playerLines.Count - 1]; 
+        //        typingText = false; 
         //    }
-        //    if(lineIndex >= 0)
+        //    else if (lineIndex >= 0)
         //    {
         //        typeRoutine = TypeText(test.playerLines[lineIndex]);
         //        StartCoroutine(typeRoutine);
         //        IncrementLineIndex();
         //    }
-            
         //}
+
+        if(InputHandler.Instance.Interact)
+        {
+            CycleDialogue(); 
+        }
     }
 
-    void IncrementLineIndex()
+    void StartConversation(DialogueData data)
     {
-        lineIndex++;
-        if (lineIndex > test.playerLines.Count - 1)
+        SetActiveDialogue(data);
+        CycleDialogue(); 
+    }
+
+    void SetActiveDialogue (DialogueData data)
+    {
+        dialogueLineIndex = 0;
+        activeDialogue = data; 
+    }
+
+    void CycleDialogue()
+    {
+        if(dialogueLineIndex < activeDialogue.dialogueLines.Count - 1)
         {
-            lineIndex = -1; 
+            if(typingText)
+            {
+                StopCoroutine(typeRoutine);
+                uiText.text = activeDialogue.dialogueLines[dialogueLineIndex].line;
+                typingText = false;
+                dialogueLineIndex++; 
+            }
+            else
+            {
+                // TODO, set dialogue source images 
+                typeRoutine = TypeText(activeDialogue.dialogueLines[dialogueLineIndex].line);
+                StartCoroutine(typeRoutine);
+            }
+        }
+        else
+        {
+            // Out of dialogue in sequence, check if there are choices to be made 
+            // Asserts that there is text for player choice 
+            if(typingText)
+            {
+                StopCoroutine(typeRoutine); 
+            }
+            else
+            {
+                if(activeDialogue.playerChoice != "")
+                {
+                    // TODO, set dialogue source images 
+                    
+                    typeRoutine = TypeText(activeDialogue.playerChoice);
+                    StartCoroutine(typeRoutine);
+                    // TODO, make choice buttons 
+                }
+                else
+                {
+                    // No choices, end dialogue!
+                    Debug.Log("End Dialogue!"); 
+                }
+                
+            }
+
         }
     }
 
@@ -60,6 +122,7 @@ public class DialogueManager : Singleton<DialogueManager> {
             yield return 0;
             yield return new WaitForSeconds(letterPause);
         }
+        dialogueLineIndex++; 
         typingText = false; 
     }
 }
