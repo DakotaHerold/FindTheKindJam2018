@@ -5,11 +5,7 @@ using UnityEngine;
 public enum CharacterState
 {
     Idle,
-    SlowRun,
-    NormalRun,
-    FastRun,
-    MoveUp,
-    MoveDown
+    Run
 }
 
 [RequireComponent(typeof(SpriteRenderer), typeof(Animator))]
@@ -37,91 +33,79 @@ public class Player : MonoBehaviour {
         }
 
         anim.SetInteger("State", (int)currentState);
-        anim.SetFloat("SpeedMultiplier", 1 + (moveSpeed / maxMoveSpeed));
+
+        float animMultiplier = 1 + (moveSpeed / maxMoveSpeed);
+
+        if(animMultiplier < 0.3f)
+        {
+            animMultiplier = 0.3f;
+        }
+
+        anim.SetFloat("SpeedMultiplier", animMultiplier);
     }
 
     private void UpdateMovement()
     {
         if (!switchingLanes)
         {
-            if (Input.GetKey(KeyCode.D) && transform.position.x < rightBound)
+            Vector2 movement = InputHandler.Instance.MoveAxes;
+
+            if(movement.x != 0)
             {
-                currentState = CharacterState.FastRun;
+                if (movement.x > 0 && transform.position.x < rightBound)
+                {
+                    if (moveSpeed > 0)
+                    {
+                        moveSpeed += acceleration * Time.deltaTime;
+                    }
+                    else
+                    {
+                        moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
+                    }
 
-                if (moveSpeed > 0)
-                {
-                    moveSpeed += acceleration * Time.deltaTime;
+                    if (moveSpeed > maxMoveSpeed)
+                    {
+                        moveSpeed = maxMoveSpeed;
+                    }
                 }
-                else
+                else if (movement.x < 0 && transform.position.x > leftBound)
                 {
-                    moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
-                }
+                    if (moveSpeed < 0)
+                    {
+                        moveSpeed -= acceleration * Time.deltaTime;
+                    }
+                    else
+                    {
+                        moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
+                    }
 
-                if (moveSpeed > maxMoveSpeed)
-                {
-                    moveSpeed = maxMoveSpeed;
+                    if (moveSpeed < maxMoveSpeed * -1)
+                    {
+                        moveSpeed = maxMoveSpeed * -1;
+                    }
                 }
-            }
-            else if (Input.GetKey(KeyCode.A) && transform.position.x > leftBound)
-            {
-                currentState = CharacterState.SlowRun;
-
-                if (moveSpeed < 0)
+                else if (transform.position.x > rightBound || transform.position.x < leftBound)
                 {
-                    moveSpeed -= acceleration * Time.deltaTime;
-                }
-                else
-                {
-                    moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
-                }
-
-                if (moveSpeed < maxMoveSpeed * -1)
-                {
-                    moveSpeed = maxMoveSpeed * -1;
+                    Decelerate();
                 }
             }
             else
             {
-                if (moveSpeed > 0)
-                {
-                    currentState = CharacterState.SlowRun;
-                    moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
-
-                    if (moveSpeed < 0)
-                    {
-                        moveSpeed = 0;
-                    }
-                }
-                else if (moveSpeed < 0)
-                {
-                    currentState = CharacterState.FastRun;
-                    moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
-
-                    if (moveSpeed > 0)
-                    {
-                        moveSpeed = 0;
-                    }
-                }
-                else
-                {
-                    currentState = CharacterState.NormalRun;
-                }
+                Decelerate();
             }
 
-            if (Input.GetKeyDown(KeyCode.W))
+            if (movement.y > 0)
             {
                 if (lane > 0)
                 {
-                    currentState = CharacterState.MoveUp;
                     switchingLanes = true;
                     lane--;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.S))
+            if (movement.y < 0)
             {
                 if (lane < 2)
                 {
-                    currentState = CharacterState.MoveDown;
                     switchingLanes = true;
                     lane++;
                 }
@@ -152,27 +136,35 @@ public class Player : MonoBehaviour {
                 }
             }
 
-            if (moveSpeed > 0 && transform.position.x >= rightBound)
+            if (transform.position.x > rightBound || transform.position.x < leftBound)
             {
-                moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
-
-                if (moveSpeed < 0)
-                {
-                    moveSpeed = 0;
-                }
-            }
-            else if (moveSpeed < 0 && transform.position.x <= leftBound)
-            {
-                moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
-
-                if (moveSpeed > 0)
-                {
-                    moveSpeed = 0;
-                }
+                Decelerate();
             }
         }
 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+    }
+
+    public void Decelerate()
+    {
+        if (moveSpeed > 0)
+        {
+            moveSpeed -= decelerationMultiplier * acceleration * Time.deltaTime;
+
+            if (moveSpeed < 0)
+            {
+                moveSpeed = 0;
+            }
+        }
+        else if (moveSpeed < 0)
+        {
+            moveSpeed += decelerationMultiplier * acceleration * Time.deltaTime;
+
+            if (moveSpeed > 0)
+            {
+                moveSpeed = 0;
+            }
+        }
     }
 
     public CharacterState State

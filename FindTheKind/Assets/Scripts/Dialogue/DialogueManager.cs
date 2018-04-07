@@ -12,7 +12,11 @@ public class DialogueManager : Singleton<DialogueManager> {
     private Button[] optionButtons; 
     //public DialogueData test;
 
+<<<<<<< HEAD
     private DialogueSource activeSpeaker; 
+=======
+    //private DialogueSource
+>>>>>>> 949bb1a4eaabf4f67b6d627c2e2bf696d3fb7315
     private int dialogueLineIndex = 0; 
     private bool typingText = false;
 
