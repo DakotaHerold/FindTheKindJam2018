@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using Rewired; 
 
 public class InputHandler : Singleton<InputHandler> {
@@ -29,3 +30,4 @@ public class InputHandler : Singleton<InputHandler> {
         
     }
 }
+

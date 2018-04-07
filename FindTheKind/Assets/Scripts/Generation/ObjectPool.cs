@@ -24,19 +24,6 @@ public class ObjectPool : MonoBehaviour
     [SerializeField]
     public List<PooledObject> pooledPrefabs;
 
-    static ObjectPool _generator;
-
-    public static ObjectPool generator {
-        get
-        {
-            if (_generator != null)
-            {
-                _generator = FindObjectOfType<ObjectPool>();
-            }
-            return _generator;
-        }
-    }
-
     // Use this for initialization
     void Start()
     {
@@ -50,10 +37,10 @@ public class ObjectPool : MonoBehaviour
         pool = new List<GameObject>();
         foreach(PooledObject obj in pooled)
         {
-            obj.chunk.GetComponent<TileScroll>().ScrollSpeed = scrollSpeed;
             for (int i = 0; i < obj.count; ++i)
             {
-                GameObject gameObj = Instantiate(obj.chunk) as GameObject;
+                GameObject gameObj = Instantiate(obj.chunk, this.gameObject.transform) as GameObject;
+                gameObj.GetComponent<TileScroll>().ScrollSpeed = scrollSpeed;
                 gameObj.SetActive(false);
                 pool.Add(gameObj);
             }
@@ -66,6 +53,7 @@ public class ObjectPool : MonoBehaviour
         {
             GameObject toRemove = pool[Random.Range(0, pool.Count)];
             toRemove.transform.position = spawnLocation.position;
+
             toRemove.SetActive(true);
             
             pool.Remove(toRemove);

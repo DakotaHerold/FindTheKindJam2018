@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileScroll : MonoBehaviour {
 
-    private static float scrollSpeed;
+    private float scrollSpeed;
     private float maxScrollSpeed = 0.3f;
 
     public float ScrollSpeed
