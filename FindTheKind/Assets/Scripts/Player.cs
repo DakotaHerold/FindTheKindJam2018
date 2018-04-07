@@ -170,6 +170,5 @@ public class Player : MonoBehaviour {
         }
 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-        Debug.Log("Character State: " + currentState);
     }
 }
