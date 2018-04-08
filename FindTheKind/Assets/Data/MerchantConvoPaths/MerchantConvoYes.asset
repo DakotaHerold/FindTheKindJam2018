@@ -9,20 +9,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: MerchantConvo
+  m_Name: MerchantConvoYes
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: (A man approaches you, looks like he's selling something.)
+  - line: Sure thing!
     source: 0
-    characterPortrait: {fileID: 0}
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
     moneyCost: 0
-  - line: Hey man, could you please help me support my family and buy some DVD's.
+  - line: Thanks man, I appreciate the help!
     source: 6
     characterPortrait: {fileID: 21300000, guid: 95e43f9fff5b25c4da0a52ceb8856b1f,
       type: 3}
+    moneyCost: 10
+  - line: (You continue on your way.)
+    source: 0
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
     moneyCost: 0
-  playerChoice: Do you help the man by buying something?
-  isRoot: 1
-  choices:
-  - {fileID: 11400000, guid: 7ba848b2639660b4ab51f05df2987852, type: 2}
-  - {fileID: 11400000, guid: da30d9fa4c79eca4b8dcf35681ac5aa4, type: 2}
+  playerChoice: Yes
+  isRoot: 0
+  choices: []
