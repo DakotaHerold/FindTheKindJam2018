@@ -28,17 +28,17 @@ public class Person : MonoBehaviour {
         {
             //TODO start a conversation
             soundManager.Play(clips[Random.Range(0, 2)]);
-            talkedTo = true;
+            GameManager.Instance.TalkedToNPC(gameObject);
             levelManager.PauseLevel();
             levelManager.StartConversation(dialogueData);
         }
     }
 
-    public bool TalkedTo
+    public DialogueData Data
     {
         get
         {
-            return talkedTo;
+            return dialogueData;
         }
     }
 }

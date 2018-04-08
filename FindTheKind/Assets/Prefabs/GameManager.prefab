@@ -54,9 +54,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 0}
   NPCs:
+  - {fileID: 1391704825932852, guid: 3819d974d7ae232458df139358c77636, type: 2}
   - {fileID: 1499609217643174, guid: 07ebf570ad2a4cd41b1ecb29ac4c7b2b, type: 2}
-  - {fileID: 1499609217643174, guid: 07ebf570ad2a4cd41b1ecb29ac4c7b2b, type: 2}
-  - {fileID: 1499609217643174, guid: 07ebf570ad2a4cd41b1ecb29ac4c7b2b, type: 2}
+  - {fileID: 1236149637218568, guid: 165aab5eeec21634ab3e76af9dceb809, type: 2}
+  - {fileID: 1979571680529118, guid: 036c946c46f12f7478ed1cf02ab7d575, type: 2}
+  - {fileID: 1774125623614600, guid: add3df760afd8e745b4802aafc8466f9, type: 2}
+  - {fileID: 1347302497979850, guid: 72b7e17fe8743c34a95e36054548a5f9, type: 2}
+  - {fileID: 1116564878938126, guid: c0472926beae7b4469dad27987171200, type: 2}
+  - {fileID: 1186446585447556, guid: ee967b4367964ad4fa320e21da6a8eb6, type: 2}
+  - {fileID: 1247786249796826, guid: 2a817c5b344823e48addf6f6a5f44f2d, type: 2}
+  - {fileID: 1032151342742906, guid: e3fc4f490e7afe8449d5d2475a39b0e3, type: 2}
 --- !u!114 &114414000772315056
 MonoBehaviour:
   m_ObjectHideFlags: 1
