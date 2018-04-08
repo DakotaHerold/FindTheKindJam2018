@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
-
-    public const float LEVEL_TIME = 2;//120; 
+    
+    public const float LEVEL_TIME = 10;//120; 
     public const int SPAWN_INTERVAL = 5;
 
-    bool isAllowedToSpawn = false; 
+    bool isAllowedToSpawn = true; 
 
     enum GAME_STATE
     {
@@ -18,6 +18,7 @@ public class GameManager : Singleton<GameManager> {
     }
 
     private GAME_STATE gameState;
+    private float spawnTimer = 0f;
     [SerializeField]
     public DialogueManager dialogueManager;
     private LevelManager levelManager;
@@ -57,17 +58,16 @@ public class GameManager : Singleton<GameManager> {
     {
         if (gameState == GAME_STATE.Running)
         {
-            if(timer > 0)
+            timer -= Time.deltaTime;
+            spawnTimer += Time.deltaTime;
+            if (spawnTimer >= SPAWN_INTERVAL && isAllowedToSpawn)
             {
-                timer -= Time.deltaTime;
-                if(Mathf.RoundToInt(timer) % SPAWN_INTERVAL == 0 && !isAllowedToSpawn)
-                {
-                    isAllowedToSpawn = true; 
-                    SpawnNpc();
-                }
+                isAllowedToSpawn = false;
+                spawnTimer = 0f;
+                SpawnNpc();
             }
-                
-            else 
+
+            if (timer <= 0) 
             {
                 GoToNextLevel(); 
             }
@@ -102,19 +102,45 @@ public class GameManager : Singleton<GameManager> {
 
     public void SpawnNpc()
     {
-        bool spawned = levelManager.SpawnNPC(notTalkedTo[Random.Range(0, notTalkedTo.Count)]);
-        Debug.Log("Spawned? " + spawned);
+        GameObject npcToSpawn = notTalkedTo[Random.Range(0, notTalkedTo.Count)];
+
+        bool spawned = levelManager.SpawnNPC(npcToSpawn);
+        if (spawned)
+        {
+            Debug.Log("Spawned NPC: " + npcToSpawn.name);
+        }
     }
 
     public void TalkedToNPC(GameObject NPC)
     {
-        notTalkedTo.Remove(NPC);
-        talkedTo.Add(NPC);
+        for(int i = 0; i < notTalkedTo.Count; i++)
+        {
+            if (notTalkedTo[i].GetComponent<Person>().Data == NPC.GetComponent<Person>().Data)
+            {
+                talkedTo.Add(notTalkedTo[i]);
+                notTalkedTo.Remove(notTalkedTo[i]);
+            }
+        }
+
+        string output = "Spoken to NPCs: \n";
+
+        foreach (GameObject npc in talkedTo)
+        {
+            output += npc.name + "\n";
+        }
+        output += "\nUnspoken to NPCs: \n";
+        foreach(GameObject npc in notTalkedTo)
+        {
+            output += npc.name + "\n";
+        }
+
+        Debug.Log(output);
     }
 
     public void GoToNextLevel()
     {
         timer = LEVEL_TIME;
+        spawnTimer = 0f;
         level += 10;
         if (level > 70)
         {

@@ -28,15 +28,4 @@ public class TileScroll : MonoBehaviour {
         Debug.Log("No spawnpoint");
         return false;
     }
-
-    public void RemoveTile()
-    {
-        if(NPC != null)
-        {
-            if (NPC.GetComponent<Person>().TalkedTo)
-            {
-                GameManager.Instance.TalkedToNPC(NPC);
-            }
-        }
-    }
 }
