@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour {
     [SerializeField]
     private Player player;
     [SerializeField]
-    private float speedChange, screenEdge;
+    private float speedChange, slowestSpeed, screenEdge;
     [SerializeField]
     private Parallax[] parallaxLayers;
     [SerializeField]
@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour {
 
         for(int i = 0; i < parallaxLayers.Length; i++)
         {
-            parallaxLayers[i].setScrollSpeed((i * speedChange) + 5);
+            parallaxLayers[i].setScrollSpeed((i * speedChange) + slowestSpeed);
         }
     }
 
