@@ -86,7 +86,8 @@ public class GameManager : Singleton<GameManager> {
         levelManager.PauseLevel();
         dialogueManager.DisableStartGameHud();
         funeralScreen.SetActive(true);
-        
+        dialogueManager.FinalDialogue(); 
+
 
         // Have dialogue manager disable top hud
         // TODO generate conversation based on who talked and what they'd say

@@ -19,46 +19,81 @@ public class DialogueManager : MonoBehaviour {
     [Space(30)]
 
     // End Game Refs 
+    [SerializeField]
     [TextArea]
     public string businessManEndLine;
 
+    [SerializeField]
     public Sprite soccermom_characterPortrait;
     [TextArea]
+
+    [SerializeField]
     public string soccermom_endLine;
 
+
+    [SerializeField]
     public Sprite youngwoman_characterPortrait;
+
+    [SerializeField]
     [TextArea]
     public string youngwoman_endLine;
 
+
+    [SerializeField]
     public Sprite youngworker_characterPortrait;
+
+    [SerializeField]
     [TextArea]
     public string youngworker_endLine;
 
+    [SerializeField]
     public Sprite littleboy_characterPortrait;
+
+    [SerializeField]
     [TextArea]
     public string littleboy_endLine;
 
+    [SerializeField]
     public Sprite littlegirl_characterPortrait;
+
+    [SerializeField]
     [TextArea]
     public string littlegirl_endLine;
 
+    [SerializeField]
     public Sprite merchant_characterPortrait;
+
+    [SerializeField]
     [TextArea]
     public string merchant_endLine;
 
+    [SerializeField]
     public Sprite grunge_characterPortrait;
+
+    [SerializeField]
     [TextArea]
     public string grunge_endLine;
 
+    [SerializeField]
     public Sprite cityman_characterPortrait;
+
+    [SerializeField]
     [TextArea]
     public string cityman_endLine;
 
+
+    [SerializeField]
     public Sprite elderlyman_characterPortrait;
+
+    [SerializeField]
     [TextArea]
     public string elderlyman_endLine;
 
+
+    [SerializeField]
     public Sprite elderlywoman_characterPortrait;
+
+    [SerializeField]
     [TextArea]
     public string elderlywoman_endLine;
 
@@ -81,8 +116,8 @@ public class DialogueManager : MonoBehaviour {
     private DialogueData activeDialogue;
 
     // End Game
-    private List<DialogueData.DialoguePiece> peopleSpokenTo;
-    public List<string> endGameLines; 
+    public List<DialogueData.DialoguePiece> peopleSpokenTo;
+    private bool inFinalDialogue = false; 
 
     private void Start()
     {
@@ -100,13 +135,25 @@ public class DialogueManager : MonoBehaviour {
 
     private void Update()
     {
-        if(activeDialogue != null)
-        {
-            if (InputHandler.Instance.Interact)
+        //if (inFinalDialogue)
+        //{
+        //    if (InputHandler.Instance.Interact)
+        //    {
+        //        CycleEndDialogue(); 
+        //    }
+        //}
+        //else
+        //{
+            if (activeDialogue != null)
             {
-                CycleDialogue();
+                if (InputHandler.Instance.Interact)
+                {
+                    CycleDialogue();
+                }
             }
-        }
+        //}
+
+        
         
     }
 
@@ -147,9 +194,10 @@ public class DialogueManager : MonoBehaviour {
     public void StartConversation(DialogueData data)
     {
         NamePanel.SetActive(true);
-        DialoguePanel.SetActive(true); 
+        DialoguePanel.SetActive(true);
         SetActiveDialogue(data);
-        CycleDialogue(); 
+        CycleDialogue();
+        SetEndData(); 
     }
 
     public void EndConversation()
@@ -180,17 +228,18 @@ public class DialogueManager : MonoBehaviour {
     {
         dialogueLineIndex = 0;
         activeDialogue = data;
+    }
 
+    void SetEndData()
+    {
         DialogueData.DialoguePiece newPiece = new DialogueData.DialoguePiece();
-        //newPiece.characterPortrait = 
-        //newPiece.line = ;
         newPiece.source = activeDialogue.whoStartedConversation;
 
-        switch(newPiece.source)
+        switch (newPiece.source)
         {
             case DialogueSource.City_Man:
                 newPiece.line = cityman_endLine;
-                newPiece.characterPortrait = cityman_characterPortrait; 
+                newPiece.characterPortrait = cityman_characterPortrait;
                 break;
             case DialogueSource.Elderly_Man:
                 newPiece.line = cityman_endLine;
@@ -227,9 +276,24 @@ public class DialogueManager : MonoBehaviour {
             case DialogueSource.Young_Worker:
                 newPiece.line = cityman_endLine;
                 newPiece.characterPortrait = cityman_characterPortrait;
-                break; 
+                break;
         }
-        peopleSpokenTo.Add(newPiece); 
+
+        bool containsChar = false;
+
+        foreach (DialogueData.DialoguePiece p in peopleSpokenTo)
+        {
+            if (p.source == newPiece.source)
+            {
+                containsChar = true;
+                break;
+            }
+        }
+
+        if (containsChar == false)
+        {
+            peopleSpokenTo.Add(newPiece);
+        }
     }
 
     void CycleDialogue()
@@ -309,6 +373,76 @@ public class DialogueManager : MonoBehaviour {
                 
             }
 
+        }
+    }
+
+    public void FinalDialogue()
+    {
+        dialogueLineIndex = 0;
+        inFinalDialogue = true;
+        StartEndDialogue(); 
+    }
+
+    void StartEndDialogue()
+    {
+        // Open panels 
+        NamePanel.SetActive(true);
+        DialoguePanel.SetActive(true);
+
+        activeSpeaker = DialogueSource.Business_Man;
+        NPC_PortraitPanel.SetActive(false);
+        PC_PortraitPanel.SetActive(true);
+
+        string nameString = DialogueSource.Business_Man.source.ToString();
+        nameString = nameString.Replace('_', ' ');
+        NamePanel.GetComponentInChildren<Text>().text = nameString;
+
+        string textToType = businessManEndLine;
+
+        if (typingText)
+        {
+            StopCoroutine(typeRoutine);
+            boxText.text = textToType;
+            typingText = false;
+        }
+        else
+        {
+            typeRoutine = TypeText(textToType);
+            StartCoroutine(typeRoutine);
+        }
+    }
+
+    void CycleEndDialogue()
+    {
+        if (dialogueLineIndex < peopleSpokenTo.Count)
+        {
+            activeSpeaker = peopleSpokenTo[dialogueLineIndex].source;
+            NPC_PortraitPanel.SetActive(true);
+            PC_PortraitPanel.SetActive(false);
+
+            string nameString = peopleSpokenTo[dialogueLineIndex].source.ToString();
+            nameString = nameString.Replace('_', ' ');
+            NamePanel.GetComponentInChildren<Text>().text = nameString;
+
+            string textToType = peopleSpokenTo[dialogueLineIndex].line;
+
+            if (typingText)
+            {
+                StopCoroutine(typeRoutine);
+                boxText.text = textToType;
+                typingText = false;
+                dialogueLineIndex++;
+            }
+            else
+            {
+                typeRoutine = TypeText(textToType);
+                StartCoroutine(typeRoutine);
+            }
+        }
+        else
+        {
+            inFinalDialogue = false;
+            GameManager.Instance.RestartGame(); 
         }
     }
 

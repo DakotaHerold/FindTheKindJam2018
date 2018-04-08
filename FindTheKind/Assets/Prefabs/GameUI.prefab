@@ -357,6 +357,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1773549519325374
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224049119150550750}
+  - component: {fileID: 222326972617466062}
+  - component: {fileID: 114315278447257464}
+  m_Layer: 5
+  m_Name: FuneralImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1808494365928402
 GameObject:
   m_ObjectHideFlags: 1
@@ -654,7 +671,43 @@ MonoBehaviour:
   DialoguePanel: {fileID: 1808494365928402}
   PC_PortraitPanel: {fileID: 1524297360004888}
   NPC_PortraitPanel: {fileID: 1285638493014920}
-  testDialogue: {fileID: 0}
+  CoinMeter: {fileID: 1939448826435306}
+  LevelTitle: {fileID: 1230970801403664}
+  Timer: {fileID: 1650835357565634}
+  businessManEndLine: 'I can''t believe I''ve passed away so young. I hope I''m remembered
+    fondly. '
+  soccermom_characterPortrait: {fileID: 21300000, guid: ee5249b158518ba468b2ddf2b399eb9f,
+    type: 3}
+  soccermom_endLine: "He didn\u2019t have to stop and listen, but he did, when no
+    one else did.\r\n"
+  youngwoman_characterPortrait: {fileID: 21300000, guid: 61fef11fd0edf0e40911eddab871236d,
+    type: 3}
+  youngwoman_endLine: "When everyone else turned a blind eye, he did the right thing
+    and stepped in.\r\n"
+  youngworker_characterPortrait: {fileID: 21300000, guid: 7d33956b27cd5be448499db4fa9d13a2,
+    type: 3}
+  youngworker_endLine: "He was a good man. He didn\u2019t mind to stop and help others."
+  littleboy_characterPortrait: {fileID: 21300000, guid: 631096a6af512f64aacd6c143bf7b759,
+    type: 3}
+  littleboy_endLine: " He helped me feel better and gave selflessly.\r"
+  littlegirl_characterPortrait: {fileID: 21300000, guid: fae4e7a2f579a284da9aed45ce1eca9b,
+    type: 3}
+  littlegirl_endLine: He was a good friend.
+  merchant_characterPortrait: {fileID: 21300000, guid: 95e43f9fff5b25c4da0a52ceb8856b1f,
+    type: 3}
+  merchant_endLine: He had no problem helping the less fortunate.
+  grunge_characterPortrait: {fileID: 21300000, guid: 8902c6735ebf15f49bd63e282bb5f1dd,
+    type: 3}
+  grunge_endLine: He was a friendly guy with no prejudices.
+  cityman_characterPortrait: {fileID: 21300000, guid: 12291c083902a9046a936b7750aea302,
+    type: 3}
+  cityman_endLine: He came to help when I needed advice.
+  elderlyman_characterPortrait: {fileID: 21300000, guid: 76718a9a5312dec418d8db11fcdc5966,
+    type: 3}
+  elderlyman_endLine: He was a good, considerate man.
+  elderlywoman_characterPortrait: {fileID: 21300000, guid: ca695f3d1e28e2440a7f3c60b720940a,
+    type: 3}
+  elderlywoman_endLine: He had no problem giving up money to help others.
 --- !u!114 &114213408843386218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -739,6 +792,33 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: e0eede1f6a15f2a44902f7850b20d194, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!114 &114315278447257464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773549519325374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: a89b397e776dfcd4a9c8888d8b2a8dea, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -898,7 +978,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Decade
+  m_Text: Age
 --- !u!114 &114586079905858876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1385,6 +1465,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939448826435306}
+--- !u!222 &222326972617466062
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773549519325374}
 --- !u!222 &222375431645566138
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -1560,6 +1646,24 @@ RectTransform:
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1250, y: 290}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224049119150550750
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773549519325374}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.1, y: 0.87999994, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224584909431751596}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224119693297847006
 RectTransform:
@@ -1757,6 +1861,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.34270832, y: 0.34270832, z: 0.34270832}
   m_Children:
+  - {fileID: 224049119150550750}
   - {fileID: 224825921226457738}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1892,7 +1997,7 @@ RectTransform:
   - {fileID: 224008353030230300}
   - {fileID: 224841686378584124}
   m_Father: {fileID: 224584909431751596}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
