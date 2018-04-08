@@ -116,7 +116,7 @@ public class DialogueManager : MonoBehaviour {
     private DialogueData activeDialogue;
 
     // End Game
-    private List<DialogueData.DialoguePiece> peopleSpokenTo;
+    private List<DialogueData.DialoguePiece> peopleSpokenTo = new List<DialogueData.DialoguePiece>();
     private bool inFinalDialogue = false; 
 
     private void Start()
@@ -242,40 +242,40 @@ public class DialogueManager : MonoBehaviour {
                 newPiece.characterPortrait = cityman_characterPortrait;
                 break;
             case DialogueSource.Elderly_Man:
-                newPiece.line = cityman_endLine;
-                newPiece.characterPortrait = cityman_characterPortrait;
+                newPiece.line = elderlyman_endLine;
+                newPiece.characterPortrait = elderlyman_characterPortrait;
                 break;
             case DialogueSource.Elderly_Woman:
-                newPiece.line = cityman_endLine;
-                newPiece.characterPortrait = cityman_characterPortrait;
+                newPiece.line = elderlywoman_endLine;
+                newPiece.characterPortrait = elderlywoman_characterPortrait;
                 break;
             case DialogueSource.Grunge_Girl:
-                newPiece.line = cityman_endLine;
-                newPiece.characterPortrait = cityman_characterPortrait;
+                newPiece.line = grunge_endLine;
+                newPiece.characterPortrait = grunge_characterPortrait;
                 break;
             case DialogueSource.Little_Boy:
-                newPiece.line = cityman_endLine;
-                newPiece.characterPortrait = cityman_characterPortrait;
+                newPiece.line = littleboy_endLine;
+                newPiece.characterPortrait = littleboy_characterPortrait;
                 break;
             case DialogueSource.Little_Girl:
-                newPiece.line = cityman_endLine;
-                newPiece.characterPortrait = cityman_characterPortrait;
+                newPiece.line = littlegirl_endLine;
+                newPiece.characterPortrait = littlegirl_characterPortrait;
                 break;
             case DialogueSource.Merchant:
-                newPiece.line = cityman_endLine;
-                newPiece.characterPortrait = cityman_characterPortrait;
+                newPiece.line = merchant_endLine;
+                newPiece.characterPortrait = merchant_characterPortrait;
                 break;
             case DialogueSource.Soccer_Mom:
-                newPiece.line = cityman_endLine;
-                newPiece.characterPortrait = cityman_characterPortrait;
+                newPiece.line = soccermom_endLine;
+                newPiece.characterPortrait = soccermom_characterPortrait;
                 break;
             case DialogueSource.Young_Woman:
-                newPiece.line = cityman_endLine;
-                newPiece.characterPortrait = cityman_characterPortrait;
+                newPiece.line = youngwoman_endLine;
+                newPiece.characterPortrait = youngwoman_characterPortrait;
                 break;
             case DialogueSource.Young_Worker:
-                newPiece.line = cityman_endLine;
-                newPiece.characterPortrait = cityman_characterPortrait;
+                newPiece.line = youngworker_endLine;
+                newPiece.characterPortrait = youngworker_characterPortrait;
                 break;
         }
 
@@ -456,7 +456,8 @@ public class DialogueManager : MonoBehaviour {
         {
             inFinalDialogue = false;
             
-            GameManager.Instance.RestartGame(); 
+            GameManager.Instance.RestartGame();
+            peopleSpokenTo = new List<DialogueData.DialoguePiece>();
         }
     }
 
