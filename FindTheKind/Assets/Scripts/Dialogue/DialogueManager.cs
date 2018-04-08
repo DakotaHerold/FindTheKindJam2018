@@ -135,15 +135,15 @@ public class DialogueManager : MonoBehaviour {
 
     private void Update()
     {
-        //if (inFinalDialogue)
-        //{
-        //    if (InputHandler.Instance.Interact)
-        //    {
-        //        CycleEndDialogue(); 
-        //    }
-        //}
-        //else
-        //{
+        if (inFinalDialogue)
+        {
+            if (InputHandler.Instance.Interact)
+            {
+                CycleEndDialogue();
+            }
+        }
+        else
+        {
             if (activeDialogue != null)
             {
                 if (InputHandler.Instance.Interact)
@@ -151,10 +151,10 @@ public class DialogueManager : MonoBehaviour {
                     CycleDialogue();
                 }
             }
-        //}
+        }
 
-        
-        
+
+
     }
 
     void OffsetButtonsInitial()
@@ -197,7 +197,7 @@ public class DialogueManager : MonoBehaviour {
         DialoguePanel.SetActive(true);
         SetActiveDialogue(data);
         CycleDialogue();
-        SetEndData(); 
+        
     }
 
     public void EndConversation()
@@ -365,7 +365,13 @@ public class DialogueManager : MonoBehaviour {
                 {
                     // Check if NPC asked for coins 
                     if (activeDialogue.dialogueLines[dialogueLineIndex-1].moneyCost > 0)
-                        GameManager.Instance.NumCoins -= activeDialogue.dialogueLines[dialogueLineIndex-1].moneyCost; 
+                        GameManager.Instance.NumCoins -= activeDialogue.dialogueLines[dialogueLineIndex-1].moneyCost;
+
+                    if (activeDialogue.dialogueLines[dialogueLineIndex].positiveChoice)
+                    {
+                        SetEndData();
+                    }
+
                     // No choices, end dialogue!
                     EndConversation(); 
                     
@@ -393,7 +399,7 @@ public class DialogueManager : MonoBehaviour {
         NPC_PortraitPanel.SetActive(false);
         PC_PortraitPanel.SetActive(true);
 
-        string nameString = DialogueSource.Business_Man.source.ToString();
+        string nameString = DialogueSource.Business_Man.ToString();
         nameString = nameString.Replace('_', ' ');
         NamePanel.GetComponentInChildren<Text>().text = nameString;
 
@@ -418,6 +424,7 @@ public class DialogueManager : MonoBehaviour {
         {
             activeSpeaker = peopleSpokenTo[dialogueLineIndex].source;
             NPC_PortraitPanel.SetActive(true);
+            NPC_Image.sprite = peopleSpokenTo[dialogueLineIndex].characterPortrait; 
             PC_PortraitPanel.SetActive(false);
 
             string nameString = peopleSpokenTo[dialogueLineIndex].source.ToString();
@@ -442,8 +449,17 @@ public class DialogueManager : MonoBehaviour {
         else
         {
             inFinalDialogue = false;
+            
             GameManager.Instance.RestartGame(); 
         }
+    }
+
+    public void DisableConvoHud()
+    {
+        NamePanel.SetActive(false);
+        DialoguePanel.SetActive(false);
+        NPC_PortraitPanel.SetActive(false);
+        PC_PortraitPanel.SetActive(false);
     }
 
     void ChoiceAction(DialogueData choiceData)

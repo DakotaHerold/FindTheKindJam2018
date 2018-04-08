@@ -22,6 +22,7 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField]
     public DialogueManager dialogueManager;
     private LevelManager levelManager;
+    private PlayMusic playMusic;
     [SerializeField]
     private GameObject[] NPCs;
     private List<GameObject> talkedTo, notTalkedTo;
@@ -49,6 +50,7 @@ public class GameManager : Singleton<GameManager> {
         gameState = GAME_STATE.Title; // Title
         timer = LEVEL_TIME; 
         levelManager = FindObjectOfType<LevelManager>();
+        playMusic = FindObjectOfType<PlayMusic>();
         notTalkedTo = new List<GameObject>(NPCs);
         talkedTo = new List<GameObject>();
 	}
@@ -76,6 +78,7 @@ public class GameManager : Singleton<GameManager> {
 
     public void StartGame()
     {
+        playMusic.PlaySelectedMusic(playMusic.mainMusic);
         gameState = GAME_STATE.Running;
         levelManager.ShowHud();
         levelManager.StartLevel();
@@ -98,6 +101,9 @@ public class GameManager : Singleton<GameManager> {
     {
         talkedTo = new List<GameObject>();
         notTalkedTo = new List<GameObject>(NPCs);
+        funeralScreen.SetActive(false);
+        dialogueManager.DisableConvoHud();
+        dialogueManager.DisableStartGameHud(); 
     }
 
     public void SpawnNpc()
