@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(BoxCollider2D))]
+
 public class TileScroll : MonoBehaviour {
 
-    private static float scrollSpeed;
+    private float scrollSpeed;
     private float maxScrollSpeed = 0.3f;
 
     public float ScrollSpeed

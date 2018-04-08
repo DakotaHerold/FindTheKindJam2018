@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Chunk
+  - Background
+  - Person
+  - Coin
+  - Sidewalk
+  - Tree
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour {
     private float speedChange, screenEdge;
     [SerializeField]
     private Parallax[] parallaxLayers;
+    [SerializeField]
+    public SoundManager soundManager;
 
     private void Start()
     {
