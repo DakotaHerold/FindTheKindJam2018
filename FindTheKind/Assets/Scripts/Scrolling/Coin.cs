@@ -25,7 +25,8 @@ public class Coin : MonoBehaviour {
         {
             levelManager.TotalCoins += coinValue;
             soundManager.Play(clip);
-            parallax.RemoveSprite(this.gameObject);
+            //parallax.RemoveSprite(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
