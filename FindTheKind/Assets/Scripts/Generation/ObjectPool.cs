@@ -104,6 +104,7 @@ public class ObjectPool : MonoBehaviour
     public void ReturnToPool(GameObject gameObj)
     {
         gameObj.SetActive(false);
+        gameObj.GetComponent<TileScroll>().RemoveTile();
         pool.Add(gameObj);
         parallax.Tiles.Remove(gameObj.GetComponent<TileScroll>());
     }

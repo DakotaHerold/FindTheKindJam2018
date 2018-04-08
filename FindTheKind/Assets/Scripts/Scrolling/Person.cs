@@ -9,6 +9,7 @@ public class Person : MonoBehaviour {
     private LevelManager levelManager;
     private SoundManager soundManager;
     private SoundClip[] clips;
+    private bool talkedTo = false;
 
     private void Start()
     {
@@ -27,8 +28,17 @@ public class Person : MonoBehaviour {
         {
             //TODO start a conversation
             soundManager.Play(clips[Random.Range(0, 2)]);
+            talkedTo = true;
             levelManager.PauseLevel();
             levelManager.StartConversation(dialogueData);
+        }
+    }
+
+    public bool TalkedTo
+    {
+        get
+        {
+            return talkedTo;
         }
     }
 }

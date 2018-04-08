@@ -40,7 +40,6 @@ public class Parallax : MonoBehaviour {
 
         Destroy(removed);
     }
-    
 
     public float ScrollSpeed
     {

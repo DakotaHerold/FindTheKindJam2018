@@ -16,7 +16,10 @@ public class GameManager : Singleton<GameManager> {
 
     private GAME_STATE gameState;
     private DialogueManager dialogueManager;
-    private LevelManager levelManager; 
+    private LevelManager levelManager;
+    [SerializeField]
+    private GameObject[] NPCs;
+    private List<GameObject> talkedTo, notTalkedTo;
 
     private int numCoins = 0; 
     public int NumCoins { get { return numCoins; } set { numCoins = value; } }
@@ -34,7 +37,7 @@ public class GameManager : Singleton<GameManager> {
         gameState = GAME_STATE.Running; // Title
         timer = LEVEL_TIME; 
         dialogueManager = FindObjectOfType<DialogueManager>();
-        levelManager = FindObjectOfType<LevelManager>(); 
+        levelManager = FindObjectOfType<LevelManager>();
 	}
 
     // Update is called once per frame
@@ -49,7 +52,6 @@ public class GameManager : Singleton<GameManager> {
                 GoToNextLevel(); 
             }
         }
-            
     }
 
     public void StartGame()
@@ -64,7 +66,19 @@ public class GameManager : Singleton<GameManager> {
 
     public void RestartGame()
     {
+        talkedTo = new List<GameObject>();
+        notTalkedTo = new List<GameObject>(NPCs);
+    }
 
+    public void SpawnNpc()
+    {
+        levelManager.SpawnNPC(notTalkedTo[Random.Range(0, notTalkedTo.Count)]);
+    }
+
+    public void TalkedToNPC(GameObject NPC)
+    {
+        notTalkedTo.Remove(NPC);
+        talkedTo.Add(NPC);
     }
 
     public void GoToNextLevel()
