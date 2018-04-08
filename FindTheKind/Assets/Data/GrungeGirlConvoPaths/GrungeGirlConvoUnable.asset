@@ -18,11 +18,14 @@ MonoBehaviour:
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
+    positiveChoice: 0
   - line: No problem man, have a good day!
     source: 7
     characterPortrait: {fileID: 21300000, guid: 8902c6735ebf15f49bd63e282bb5f1dd,
       type: 3}
     moneyCost: 0
+    positiveChoice: 1
   playerChoice: I can't afford it
   isRoot: 0
   choices: []
+  whoStartedConversation: 0

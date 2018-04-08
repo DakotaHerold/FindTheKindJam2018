@@ -17,26 +17,32 @@ MonoBehaviour:
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
+    positiveChoice: 0
   - line: I was playing with my friends and I scraped my knee. It hurts.
     source: 4
     characterPortrait: {fileID: 21300000, guid: 631096a6af512f64aacd6c143bf7b759,
       type: 3}
     moneyCost: 0
+    positiveChoice: 0
   - line: (You happen to have a band-aid you can offer to the boy.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
+    positiveChoice: 0
   - line: Here you go, this should help it feel better.
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
+    positiveChoice: 0
   - line: Thank you sir!
     source: 4
     characterPortrait: {fileID: 21300000, guid: 631096a6af512f64aacd6c143bf7b759,
       type: 3}
     moneyCost: 0
+    positiveChoice: 1
   playerChoice: Yes
   isRoot: 0
   choices: []
+  whoStartedConversation: 0
