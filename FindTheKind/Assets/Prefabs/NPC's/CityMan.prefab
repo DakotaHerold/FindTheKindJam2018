@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 0}
+  dialogueData: {fileID: 11400000, guid: a7ebf948f55e22c4794093acc63a1d91, type: 2}
 --- !u!212 &212049889828852360
 SpriteRenderer:
   m_ObjectHideFlags: 1
