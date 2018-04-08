@@ -16,6 +16,8 @@ public class ObjectPool : MonoBehaviour
 {
     public Transform spawnLocation;
 
+    private Parallax parallax;
+
     [SerializeField] private bool randomOffset;
 
     [SerializeField] private float scrollSpeed;
@@ -27,6 +29,7 @@ public class ObjectPool : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        parallax = GetComponentInParent<Parallax>();
         CreatePool(pooledPrefabs);
         
         //Create initial roads
@@ -55,7 +58,6 @@ public class ObjectPool : MonoBehaviour
             for (int i = 0; i < obj.count; ++i)
             {
                 GameObject gameObj = Instantiate(obj.chunk, this.gameObject.transform) as GameObject;
-                gameObj.GetComponent<TileScroll>().ScrollSpeed = scrollSpeed;
                 gameObj.SetActive(false);
                 pool.Add(gameObj);
             }
@@ -74,6 +76,8 @@ public class ObjectPool : MonoBehaviour
             
             pool.Remove(toRemove);
 
+            parallax.Tiles.Add(toRemove.GetComponent<TileScroll>());
+
             return toRemove;
         }
         return null;
@@ -82,6 +86,7 @@ public class ObjectPool : MonoBehaviour
     public void ReturnToPool(GameObject gameObj)
     {
         gameObj.SetActive(false);
-        pool.Add(gameObj); 
+        pool.Add(gameObj);
+        parallax.Tiles.Remove(gameObj.GetComponent<TileScroll>());
     }
 }

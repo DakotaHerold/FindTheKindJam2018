@@ -5,55 +5,22 @@ using UnityEngine;
 public class Parallax : MonoBehaviour {
     
     private List<GameObject> backgrounds, spriteObjects;
+    private List<TileScroll> tiles;
     private GameObject lastBackground;
+    [SerializeField]
+    private float backgroundWidth;
     private float screenEdge, scrollSpeed;
 
     // Use this for initialization
     void Start () {
-        SpriteRenderer[] renderers = GetComponentsInChildren<SpriteRenderer>();
-        backgrounds = new List<GameObject> ();
-        spriteObjects = new List<GameObject>();
-
-        for(int i = 0; i < renderers.Length; i++)
-        {
-            if(renderers[i].tag == "Background")
-            {
-                backgrounds.Add(renderers[i].gameObject);
-            }
-
-            spriteObjects.Add(renderers[i].gameObject);
-        }
-
-        if(backgrounds.Count > 0)
-        {
-            lastBackground = backgrounds[backgrounds.Count - 1];
-        }
+        tiles = new List<TileScroll>(GetComponentsInChildren<TileScroll>());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        for (int i = 0; i < spriteObjects.Count; i++)
+        foreach(TileScroll tile in tiles)
         {
-            if (backgrounds.Contains(spriteObjects[i]))
-            {
-                if (spriteObjects[i].transform.position.x < screenEdge)
-                {
-                    float spawnPosition = lastBackground.transform.localPosition.x + lastBackground.transform.localScale.x;
-                    spriteObjects[i].transform.localPosition = new Vector3(spawnPosition, 0, 0);
-                    lastBackground = spriteObjects[i];
-                }
-            }
-            else if(spriteObjects[i].transform.position.x < screenEdge)
-            {
-                GameObject removed = spriteObjects[i];
-                RemoveSprite(removed);
-                Destroy(removed);
-            }
-
-            if(i < spriteObjects.Count)
-            {
-                spriteObjects[i].transform.Translate(Vector3.left * scrollSpeed * Time.deltaTime);
-            }
+            tile.Move(scrollSpeed * Time.deltaTime);
         }
 	}
 
@@ -72,9 +39,21 @@ public class Parallax : MonoBehaviour {
         Destroy(removed);
     }
 
-    public void setScrollSpeed(float newSpeed)
+    public float ScrollSpeed
     {
-        scrollSpeed = newSpeed;
+        get { return scrollSpeed; }
+        set
+        {
+            scrollSpeed = value;
+        }
+    }
+
+    public List<TileScroll> Tiles
+    {
+        get
+        {
+            return tiles;
+        }
     }
 
     public void setScreenEdge(float edge)

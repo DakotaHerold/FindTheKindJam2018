@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
-
-    private int totalCoins;
+    
     [SerializeField]
     private Player player;
     [SerializeField]
@@ -28,7 +27,7 @@ public class LevelManager : MonoBehaviour {
 
         for(int i = 0; i < parallaxLayers.Length; i++)
         {
-            parallaxLayers[i].setScrollSpeed((i * speedChange) + slowestSpeed);
+            parallaxLayers[i].ScrollSpeed = (i * speedChange) + slowestSpeed;
         }
     }
 
@@ -38,7 +37,7 @@ public class LevelManager : MonoBehaviour {
 
         for (int i = 0; i < parallaxLayers.Length; i++)
         {
-            parallaxLayers[i].setScrollSpeed(0);
+            parallaxLayers[i].ScrollSpeed = 0;
         }
     }
 
@@ -64,11 +63,11 @@ public class LevelManager : MonoBehaviour {
     {
         get
         {
-            return totalCoins;
+            return GameManager.Instance.NumCoins;
         }
         set
         {
-            totalCoins = value;
+            GameManager.Instance.NumCoins = value;
         }
     }
 }

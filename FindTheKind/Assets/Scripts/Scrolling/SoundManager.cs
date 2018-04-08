@@ -4,7 +4,10 @@ using UnityEngine;
 
 public enum SoundClip
 {
-    CollectCoin
+    CollectCoin,
+    Step1,
+    Step2,
+    Step3
 }
 
 [RequireComponent(typeof(AudioSource))]

@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1706658573613788}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0, z: -1}
+  m_LocalPosition: {x: -2.5, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,7 +87,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.62, y: 1}
   m_EdgeRadius: 0
 --- !u!95 &95026587192962704
 Animator:
@@ -124,7 +124,9 @@ MonoBehaviour:
   laneHeight: 1.5
   rightBound: 0
   leftBound: -5
+  soundManager: {fileID: 0}
   lane: 1
+  stepClips: 010000000200000003000000
 --- !u!212 &212590333874228912
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -159,7 +161,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 85e1d71f19c3aff41b3f29ce8491d0d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b8cfc5206a98b28488232e2fa90ca4e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
