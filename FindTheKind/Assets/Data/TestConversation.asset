@@ -14,13 +14,22 @@ MonoBehaviour:
   dialogueLines:
   - line: Hello who are you
     source: 0
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
   - line: It is I, a random citizen
-    source: 1
+    source: 6
+    characterPortrait: {fileID: 21300000, guid: 8902c6735ebf15f49bd63e282bb5f1dd,
+      type: 3}
   - line: Cool!
     source: 0
-  - line: Can you help me?
-    source: 1
-  playerChoice: Will you help me?
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
+  - line: Blah
+    source: 6
+    characterPortrait: {fileID: 21300000, guid: 8902c6735ebf15f49bd63e282bb5f1dd,
+      type: 3}
+  playerChoice: Can you help me?
+  isRoot: 1
   choices:
   - {fileID: 11400000, guid: 09f35f3ada175c2418b21acb033563c4, type: 2}
   - {fileID: 11400000, guid: bcb96b510aae05748a01135aa8dccdfc, type: 2}

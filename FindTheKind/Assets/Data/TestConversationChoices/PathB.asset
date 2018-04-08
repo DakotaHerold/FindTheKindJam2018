@@ -13,6 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueLines:
   - line: Wow, rude!
-    source: 0
+    source: 6
+    characterPortrait: {fileID: 21300000, guid: 8902c6735ebf15f49bd63e282bb5f1dd,
+      type: 3}
   playerChoice: Don't help
+  isRoot: 0
   choices: []

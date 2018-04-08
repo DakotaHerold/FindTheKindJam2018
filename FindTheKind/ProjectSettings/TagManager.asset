@@ -9,6 +9,7 @@ TagManager:
   - Person
   - Coin
   - Sidewalk
+  - Tree
   layers:
   - Default
   - TransparentFX

@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour {
         }
     }
 
-    public void EndLevel()
+    public void PauseLevel()
     {
         player.State = CharacterState.Idle;
 
@@ -49,8 +49,13 @@ public class LevelManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            EndLevel();
+            PauseLevel();
         }
+    }
+
+    public void StartConversation(DialogueData data)
+    {
+        DialogueManager.Instance.StartConversation(data);
     }
 
     public int TotalCoins

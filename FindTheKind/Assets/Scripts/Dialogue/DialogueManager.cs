@@ -5,10 +5,18 @@ using UnityEngine.UI;
 
 public class DialogueManager : Singleton<DialogueManager> {
     public float letterPause = 0.2f;
-    public Text uiText;
-    //public DialogueData test;
+    public GameObject NamePanel;
+    public GameObject DialoguePanel;
+    public GameObject PC_PortraitPanel; 
+    public GameObject NPC_PortraitPanel; 
 
-    //private DialogueSource
+    private Text boxText;
+    private Image NPC_Image; 
+
+    private Button[] optionButtons; 
+    
+    private DialogueSource activeSpeaker; 
+
     private int dialogueLineIndex = 0; 
     private bool typingText = false;
 
@@ -16,45 +24,65 @@ public class DialogueManager : Singleton<DialogueManager> {
 
     DialogueData activeDialogue;
 
+    // Temp
     public DialogueData testDialogue; 
 
     private void Start()
     {
+        boxText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        NPC_Image = NPC_PortraitPanel.transform.GetChild(0).GetComponent<Image>(); 
+        optionButtons = transform.GetChild(0).GetComponentsInChildren<Button>();
+        OffsetButtons();
+        NamePanel.SetActive(false);
+        DialoguePanel.SetActive(false); 
+        //Temp 
         StartConversation(testDialogue); 
     }
 
     private void Update()
     {
-
-        //if (InputHandler.Instance.Interact)
-        //{
-        //    if (typingText)
-        //    {
-        //        StopCoroutine(typeRoutine);
-        //        if (lineIndex != -1)
-        //            uiText.text = test.playerLines[lineIndex - 1];
-        //        else
-        //            uiText.text = test.playerLines[test.playerLines.Count - 1]; 
-        //        typingText = false; 
-        //    }
-        //    else if (lineIndex >= 0)
-        //    {
-        //        typeRoutine = TypeText(test.playerLines[lineIndex]);
-        //        StartCoroutine(typeRoutine);
-        //        IncrementLineIndex();
-        //    }
-        //}
-
-        if(InputHandler.Instance.Interact)
+        if(activeDialogue != null)
         {
-            CycleDialogue(); 
+            if (InputHandler.Instance.Interact)
+            {
+                CycleDialogue();
+            }
+        }
+        
+    }
+
+    void OffsetButtons()
+    {
+        int numButtons = optionButtons.Length; 
+        Vector3 position = boxText.transform.position;
+        RectTransform buttonTransform = optionButtons[0].gameObject.transform as RectTransform;
+        float offset = buttonTransform.sizeDelta.x; 
+        position.x -= (offset * Mathf.RoundToInt((numButtons/2)));
+        position.y -= buttonTransform.sizeDelta.y - 3; 
+        offset += 10; 
+        foreach (Button b in optionButtons)
+        {
+            b.transform.position = position;
+            position.x += offset;
+            b.gameObject.SetActive(false); 
         }
     }
 
-    void StartConversation(DialogueData data)
+    public void StartConversation(DialogueData data)
     {
+        NamePanel.SetActive(true);
+        DialoguePanel.SetActive(true); 
         SetActiveDialogue(data);
         CycleDialogue(); 
+    }
+
+    public void EndConversation()
+    {
+        NamePanel.SetActive(false);
+        DialoguePanel.SetActive(false);
+        NPC_PortraitPanel.SetActive(false);
+        PC_PortraitPanel.SetActive(false); 
+        activeDialogue = null; 
     }
 
     void SetActiveDialogue (DialogueData data)
@@ -65,19 +93,36 @@ public class DialogueManager : Singleton<DialogueManager> {
 
     void CycleDialogue()
     {
-        if(dialogueLineIndex < activeDialogue.dialogueLines.Count - 1)
+        if(dialogueLineIndex < activeDialogue.dialogueLines.Count)
         {
-            if(typingText)
+            activeSpeaker = activeDialogue.dialogueLines[dialogueLineIndex].source;
+            if(activeDialogue.dialogueLines[dialogueLineIndex].source != DialogueSource.Business_Man)
+            {
+                PC_PortraitPanel.SetActive(false); 
+                NPC_PortraitPanel.SetActive(true); 
+                NPC_Image.sprite = activeDialogue.dialogueLines[dialogueLineIndex].characterPortrait;
+            }
+            else
+            {
+                NPC_PortraitPanel.SetActive(false);
+                PC_PortraitPanel.SetActive(true); 
+            }
+            string nameString = activeDialogue.dialogueLines[dialogueLineIndex].source.ToString();
+            nameString = nameString.Replace('_', ' '); 
+            NamePanel.GetComponentInChildren<Text>().text = nameString;
+            string textToType  = activeDialogue.dialogueLines[dialogueLineIndex].line; 
+
+            if (typingText)
             {
                 StopCoroutine(typeRoutine);
-                uiText.text = activeDialogue.dialogueLines[dialogueLineIndex].line;
+                boxText.text = textToType;
                 typingText = false;
                 dialogueLineIndex++; 
             }
             else
             {
                 // TODO, set dialogue source images 
-                typeRoutine = TypeText(activeDialogue.dialogueLines[dialogueLineIndex].line);
+                typeRoutine = TypeText(textToType);
                 StartCoroutine(typeRoutine);
             }
         }
@@ -87,22 +132,35 @@ public class DialogueManager : Singleton<DialogueManager> {
             // Asserts that there is text for player choice 
             if(typingText)
             {
-                StopCoroutine(typeRoutine); 
+                StopCoroutine(typeRoutine);
+                boxText.text = activeDialogue.playerChoice; 
+                typingText = false;
             }
             else
             {
-                if(activeDialogue.playerChoice != "")
+                if(activeDialogue.isRoot)
                 {
                     // TODO, set dialogue source images 
                     
                     typeRoutine = TypeText(activeDialogue.playerChoice);
                     StartCoroutine(typeRoutine);
                     // TODO, make choice buttons 
+                    for(int iChoice = 0; iChoice < activeDialogue.choices.Count; ++iChoice)
+                    {
+                        optionButtons[iChoice].GetComponentInChildren<Text>().text = activeDialogue.choices[iChoice].playerChoice;
+                        DialogueData choiceData = activeDialogue.choices[iChoice];
+                        optionButtons[iChoice].onClick.AddListener(delegate {
+                            ChoiceAction(choiceData); 
+                        });
+                        optionButtons[iChoice].gameObject.SetActive(true); 
+                    }
+
                 }
-                else
+                else //if(activeDialogue.choices.Count < 1)
                 {
+                    EndConversation(); 
                     // No choices, end dialogue!
-                    Debug.Log("End Dialogue!"); 
+                    //Debug.Log("End Dialogue!"); 
                 }
                 
             }
@@ -110,13 +168,26 @@ public class DialogueManager : Singleton<DialogueManager> {
         }
     }
 
+    void ChoiceAction(DialogueData choiceData)
+    {
+        // Disable currently enabled buttons
+        foreach(Button b in optionButtons)
+        {
+            b.gameObject.SetActive(false); 
+        }
+        SetActiveDialogue(choiceData);
+        CycleDialogue();
+    }
+
+
+
     IEnumerator TypeText(string message)
     {
-        uiText.text = ""; 
+        boxText.text = ""; 
         typingText = true; 
         foreach (char letter in message.ToCharArray())
         {
-            uiText.text += letter;
+            boxText.text += letter;
             //if (sound)
             //    audio.PlayOneShot(sound);
             yield return 0;

@@ -16,7 +16,7 @@ public class ObjectPool : MonoBehaviour
 {
     public Transform spawnLocation;
 
-    [SerializeField] private int chunkWidth;
+    [SerializeField] private bool randomOffset;
 
     [SerializeField] private float scrollSpeed;
 
@@ -28,6 +28,22 @@ public class ObjectPool : MonoBehaviour
     void Start()
     {
         CreatePool(pooledPrefabs);
+        
+        
+        /*
+        //Create initial roads
+        if (pool.Count > 0)
+        {
+            for (int i = 1; i <= 2; i++)
+            {
+                GameObject toRemove = pool[Random.Range(0, pool.Count)];
+
+                toRemove.transform.position = spawnLocation.position + new Vector3(-11.5f * i, 0, 0);
+                toRemove.SetActive(true);
+
+                pool.Remove(toRemove);
+            }
+        }*/
 
         GetObject();
     }
@@ -52,7 +68,8 @@ public class ObjectPool : MonoBehaviour
         if(pool.Count > 0)
         {
             GameObject toRemove = pool[Random.Range(0, pool.Count)];
-            toRemove.transform.position = spawnLocation.position;
+
+            toRemove.transform.position = spawnLocation.position + (randomOffset ? new Vector3(Random.Range(-1.0f, 1.0f), 0, 0) : Vector3.zero);
 
             toRemove.SetActive(true);
             
