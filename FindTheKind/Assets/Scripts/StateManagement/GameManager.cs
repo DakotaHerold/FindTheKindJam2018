@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
 
+<<<<<<< HEAD
     public const float LEVEL_TIME = 10; 
+=======
+    public const float LEVEL_TIME = 2;//120; 
+>>>>>>> 65cf0bd3938feeee76a5515c12fee64e8cf0c6ea
     public const int SPAWN_INTERVAL = 5;
 
     bool isAllowedToSpawn = true; 
@@ -25,6 +29,13 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField]
     private GameObject[] NPCs;
     private List<GameObject> talkedTo, notTalkedTo;
+
+    [SerializeField]
+    public GameObject funeralScreen;
+    [SerializeField]
+    public GameObject gameUI;
+    [SerializeField]
+    public GameObject menuUI;
 
     private int numCoins = 0; 
     public int NumCoins { get { return numCoins; } set { numCoins = value; } }
@@ -76,6 +87,13 @@ public class GameManager : Singleton<GameManager> {
 
     public void EndGame()
     {
+        levelManager.PauseLevel();
+        dialogueManager.DisableStartGameHud();
+        funeralScreen.SetActive(true);
+        
+
+        // Have dialogue manager disable top hud
+        // TODO generate conversation based on who talked and what they'd say
         gameState = GAME_STATE.GameOver; 
     }
 

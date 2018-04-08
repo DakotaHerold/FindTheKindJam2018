@@ -57,4 +57,6 @@ public class DialogueData : ScriptableObject {
 
         return result; 
     }
+
+    public DialogueSource whoStartedConversation;
 }

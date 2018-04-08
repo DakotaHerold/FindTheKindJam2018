@@ -19,8 +19,10 @@ MonoBehaviour:
     moneyCost: 0
   - line: Thanks, I appreciate this so much!
     source: 8
-    characterPortrait: {fileID: 0}
+    characterPortrait: {fileID: 21300000, guid: 12291c083902a9046a936b7750aea302,
+      type: 3}
     moneyCost: 0
   playerChoice: Yes
   isRoot: 0
   choices: []
+  whoStartedConversation: 0

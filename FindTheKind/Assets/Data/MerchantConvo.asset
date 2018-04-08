@@ -27,3 +27,4 @@ MonoBehaviour:
   choices:
   - {fileID: 11400000, guid: 7ba848b2639660b4ab51f05df2987852, type: 2}
   - {fileID: 11400000, guid: da30d9fa4c79eca4b8dcf35681ac5aa4, type: 2}
+  whoStartedConversation: 6
