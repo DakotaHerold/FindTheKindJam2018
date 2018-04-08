@@ -40,4 +40,4 @@ MonoBehaviour:
   playerChoice: Help
   isRoot: 0
   choices: []
-  whoStartedConversation: 0
+  whoStartedConversation: 10

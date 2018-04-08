@@ -27,4 +27,4 @@ MonoBehaviour:
   playerChoice: I should help.
   isRoot: 0
   choices: []
-  whoStartedConversation: 0
+  whoStartedConversation: 9

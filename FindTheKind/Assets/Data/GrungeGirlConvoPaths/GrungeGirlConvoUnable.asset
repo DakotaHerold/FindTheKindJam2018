@@ -28,4 +28,4 @@ MonoBehaviour:
   playerChoice: I can't afford it
   isRoot: 0
   choices: []
-  whoStartedConversation: 0
+  whoStartedConversation: 7

@@ -17,11 +17,14 @@ MonoBehaviour:
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
+    positiveChoice: 0
   - line: Oh alright..
     source: 8
     characterPortrait: {fileID: 21300000, guid: 12291c083902a9046a936b7750aea302,
       type: 3}
     moneyCost: 0
+    positiveChoice: 0
   playerChoice: No
   isRoot: 0
   choices: []
+  whoStartedConversation: 8
