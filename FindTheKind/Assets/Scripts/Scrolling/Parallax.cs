@@ -46,7 +46,7 @@ public class Parallax : MonoBehaviour {
             else if(spriteObjects[i].transform.position.x < screenEdge)
             {
                 GameObject removed = spriteObjects[i];
-                spriteObjects.Remove(removed);
+                RemoveSprite(removed);
                 Destroy(removed);
             }
 
@@ -56,6 +56,21 @@ public class Parallax : MonoBehaviour {
             }
         }
 	}
+
+    public void RemoveSprite(GameObject removed)
+    {
+        if (spriteObjects.Contains(removed))
+        {
+            spriteObjects.Remove(removed);
+
+            if (backgrounds.Contains(removed))
+            {
+                backgrounds.Remove(removed);
+            }
+        }
+
+        Destroy(removed);
+    }
 
     public void setScrollSpeed(float newSpeed)
     {
