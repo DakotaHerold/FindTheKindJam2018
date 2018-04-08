@@ -54,7 +54,7 @@ public class GameManager : Singleton<GameManager> {
 
     public void StartGame()
     {
-        //levelManager.StartLevel(); 
+        levelManager.StartLevel(); 
     }
 
     public void EndGame()

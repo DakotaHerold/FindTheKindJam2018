@@ -26,11 +26,12 @@ public class ObjectPool : MonoBehaviour
     [SerializeField]
     public List<PooledObject> pooledPrefabs;
 
+
     // Use this for initialization
     void Start()
     {
         parallax = GetComponentInParent<Parallax>();
-        //Debug.Log(parallax);
+        parallax.Initialize();
         CreatePool(pooledPrefabs);
        
         //Create initial roads
@@ -38,11 +39,19 @@ public class ObjectPool : MonoBehaviour
         {
             for (int i = 1; i <= 2; i++)
             {
-                GameObject toRemove = pool[Random.Range(0, pool.Count)];
-
+                GameObject toRemove;
+                if (randomOffset)
+                {
+                    toRemove = pool[Random.Range(0, pool.Count)];
+                }
+                else
+                {
+                    toRemove = pool[0];
+                    toRemove.tag = "temp";
+                }
+                
                 toRemove.transform.position = spawnLocation.position + new Vector3(-11.5f * i, 0, 0);
                 toRemove.SetActive(true);
-                toRemove.tag = "temp";
 
                 parallax.Tiles.Add(toRemove.GetComponent<TileScroll>());
 
@@ -76,7 +85,7 @@ public class ObjectPool : MonoBehaviour
             toRemove.transform.position = spawnLocation.position + (randomOffset ? new Vector3(Random.Range(-1.0f, 1.0f), 0, 0) : Vector3.zero);
 
             toRemove.SetActive(true);
-            
+
             pool.Remove(toRemove);
 
             parallax.Tiles.Add(toRemove.GetComponent<TileScroll>());

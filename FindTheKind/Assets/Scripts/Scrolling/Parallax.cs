@@ -12,7 +12,7 @@ public class Parallax : MonoBehaviour {
     private float screenEdge, scrollSpeed;
 
     // Use this for initialization
-    void Start () {
+    public void Initialize () {
         tiles = new List<TileScroll>(GetComponentsInChildren<TileScroll>());
 	}
 	
@@ -38,6 +38,7 @@ public class Parallax : MonoBehaviour {
 
         Destroy(removed);
     }
+    
 
     public float ScrollSpeed
     {
