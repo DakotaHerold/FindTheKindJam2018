@@ -7,7 +7,9 @@ public enum SoundClip
     CollectCoin,
     Step1,
     Step2,
-    Step3
+    Step3,
+    Hit1,
+    Hit2
 }
 
 [RequireComponent(typeof(AudioSource))]
