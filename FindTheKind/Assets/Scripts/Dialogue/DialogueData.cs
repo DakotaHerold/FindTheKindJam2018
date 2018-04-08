@@ -28,7 +28,8 @@ public class DialogueData : ScriptableObject {
         public string line;
         public DialogueSource source;
         public Sprite characterPortrait;
-        public int moneyCost; 
+        public int moneyCost;
+        public bool positiveChoice; 
     }
     
     public List<DialoguePiece> dialogueLines;

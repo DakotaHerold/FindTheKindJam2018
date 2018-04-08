@@ -98,6 +98,9 @@ public class GameManager : Singleton<GameManager> {
     {
         talkedTo = new List<GameObject>();
         notTalkedTo = new List<GameObject>(NPCs);
+        funeralScreen.SetActive(false);
+        dialogueManager.DisableConvoHud();
+        dialogueManager.DisableStartGameHud(); 
     }
 
     public void SpawnNpc()
