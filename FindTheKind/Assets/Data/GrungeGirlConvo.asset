@@ -9,24 +9,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: MerchantConvoYes
+  m_Name: GrungeGirlConvo
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: Sure thing!
+  - line: (A strange looking girl approaches you.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Thanks man, I appreciate the help!
-    source: 6
-    characterPortrait: {fileID: 21300000, guid: 95e43f9fff5b25c4da0a52ceb8856b1f,
-      type: 3}
-    moneyCost: 5
-  - line: (You continue on your way.)
-    source: 0
-    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+  - line: Hey dude, would you like to buy a copy of my album? ($15)
+    source: 7
+    characterPortrait: {fileID: 21300000, guid: 8902c6735ebf15f49bd63e282bb5f1dd,
       type: 3}
     moneyCost: 0
-  playerChoice: Yes
-  isRoot: 0
+  - line: You'd be supporting a local indie artist!
+    source: 7
+    characterPortrait: {fileID: 21300000, guid: 8902c6735ebf15f49bd63e282bb5f1dd,
+      type: 3}
+    moneyCost: 0
+  playerChoice: (Do you buy the album?)
+  isRoot: 1
   choices: []
