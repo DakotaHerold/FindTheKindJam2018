@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.UI; 
 
 public class ShowPanels : MonoBehaviour {
 
@@ -8,7 +9,7 @@ public class ShowPanels : MonoBehaviour {
 	public GameObject optionsTint;							//Store a reference to the Game Object OptionsTint 
 	public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
 	public GameObject pausePanel;                           //Store a reference to the Game Object PausePanel 
-    public GameObject creditsPanel; 
+    public GameObject creditsPanel;
 
     private GameObject activePanel;                         
     private MenuObject activePanelMenuObject;
@@ -77,7 +78,6 @@ public class ShowPanels : MonoBehaviour {
 	public void HideMenu()
 	{
 		menuPanel.SetActive (false);
-
 	}
 	
 	//Call this function to activate and display the Pause panel during game play

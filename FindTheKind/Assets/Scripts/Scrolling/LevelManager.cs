@@ -14,12 +14,21 @@ public class LevelManager : MonoBehaviour {
     public SoundManager soundManager;
     [SerializeField]
     public HudStates hud;
+    public Parallax gameSpace;
 
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < parallaxLayers.Length; i++)
         {
             parallaxLayers[i].setScreenEdge(screenEdge);
+        }
+
+        for (int i = 0; i < parallaxLayers.Length; i++)
+        {
+            if (parallaxLayers[i].gameObject.tag == "GameSpace")
+            {
+                gameSpace = parallaxLayers[i];
+            }
         }
     }
 
@@ -33,6 +42,8 @@ public class LevelManager : MonoBehaviour {
         parallaxLayers[1].ScrollSpeed = speedChange + slowestSpeed; // game space parallax 
         parallaxLayers[2].ScrollSpeed = (2 * speedChange) + slowestSpeed;
         parallaxLayers[3].ScrollSpeed = (2 * speedChange) + slowestSpeed; 
+
+        
     }
 
     public void PauseLevel()
@@ -60,7 +71,7 @@ public class LevelManager : MonoBehaviour {
 
     public bool SpawnNPC(GameObject NPC)
     {
-        GameObject tile = parallaxLayers[1].mostRecentTile;
+        GameObject tile = gameSpace.mostRecentTile;
 
         return tile.GetComponent<TileScroll>().SpawnNPC(NPC);
     }

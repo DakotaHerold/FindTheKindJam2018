@@ -28,7 +28,7 @@ public class ObjectPool : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         parallax = GetComponentInParent<Parallax>();
         parallax.Initialize();

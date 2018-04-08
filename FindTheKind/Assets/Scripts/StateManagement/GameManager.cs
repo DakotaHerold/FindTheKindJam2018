@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
 
-    public const float LEVEL_TIME = 6;//120; 
+    public const float LEVEL_TIME = 60;//120; 
+    public const int SPAWN_INTERVAL = 5;
+
+    bool isAllowedToSpawn = false; 
 
     enum GAME_STATE
     {
@@ -34,10 +37,12 @@ public class GameManager : Singleton<GameManager> {
 
 	// Use this for initialization
 	void Awake () {
-        gameState = GAME_STATE.Running; // Title
+        gameState = GAME_STATE.Title; // Title
         timer = LEVEL_TIME; 
         dialogueManager = FindObjectOfType<DialogueManager>();
         levelManager = FindObjectOfType<LevelManager>();
+        notTalkedTo = new List<GameObject>(NPCs);
+        talkedTo = new List<GameObject>();
 	}
 
     // Update is called once per frame
@@ -46,7 +51,16 @@ public class GameManager : Singleton<GameManager> {
         if (gameState == GAME_STATE.Running)
         {
             if(timer > 0)
+            {
                 timer -= Time.deltaTime;
+                if(Mathf.RoundToInt(timer) % SPAWN_INTERVAL == 0 && !isAllowedToSpawn)
+                {
+                    isAllowedToSpawn = true; 
+                    Debug.Log("Spawning npc");
+                    SpawnNpc();
+                }
+            }
+                
             else 
             {
                 GoToNextLevel(); 
@@ -56,6 +70,7 @@ public class GameManager : Singleton<GameManager> {
 
     public void StartGame()
     {
+        gameState = GAME_STATE.Running; 
         levelManager.StartLevel();
     }
 
@@ -72,7 +87,8 @@ public class GameManager : Singleton<GameManager> {
 
     public void SpawnNpc()
     {
-        levelManager.SpawnNPC(notTalkedTo[Random.Range(0, notTalkedTo.Count)]);
+        bool spawned = levelManager.SpawnNPC(notTalkedTo[Random.Range(0, notTalkedTo.Count)]);
+        Debug.Log("Spawned? " + spawned);
     }
 
     public void TalkedToNPC(GameObject NPC)
@@ -83,12 +99,16 @@ public class GameManager : Singleton<GameManager> {
 
     public void GoToNextLevel()
     {
-        timer = LEVEL_TIME; 
-        level += 10; 
-        if(level > 70)
+        timer = LEVEL_TIME;
+        level += 10;
+        if (level > 70)
         {
             // TODO Game Over
-            EndGame(); 
+            EndGame();
+        }
+        else
+        {
+            isAllowedToSpawn = true; 
         }
     }
 

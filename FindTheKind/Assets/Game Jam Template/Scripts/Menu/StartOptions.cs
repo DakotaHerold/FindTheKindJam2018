@@ -24,6 +24,9 @@ public class StartOptions : MonoBehaviour {
 	private ShowPanels showPanels;										//Reference to ShowPanels script on UI GameObject, to show and hide panels
     private CanvasGroup menuCanvasGroup;
 
+    [SerializeField]
+    public GameObject GameHud; 
+
 
     void Awake()
 	{
@@ -137,6 +140,8 @@ public class StartOptions : MonoBehaviour {
         }
 
         HideDelayed();
+        //showPanels.ShowHudPanel(); 
+        
         Debug.Log("Coroutine done. Game started in same scene! Put your game starting stuff here.");
         GameManager.Instance.StartGame(); 
     }

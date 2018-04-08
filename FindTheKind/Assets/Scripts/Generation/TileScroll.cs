@@ -17,11 +17,16 @@ public class TileScroll : MonoBehaviour {
 
     public bool SpawnNPC(GameObject NPC)
     {
+
         if(npcTransform != null)
         {
-            NPC = Instantiate(NPC, npcTransform.position, npcTransform.rotation, this.transform);
+            NPC = Instantiate(NPC, npcTransform.position, npcTransform.rotation);
+            NPC.transform.parent = npcTransform;
+            Debug.Log(this.gameObject.name); 
             return true;
         }
+
+        Debug.Log("No spawnpoint");
         return false;
     }
 
