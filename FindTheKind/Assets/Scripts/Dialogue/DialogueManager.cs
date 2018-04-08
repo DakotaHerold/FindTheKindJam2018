@@ -367,13 +367,15 @@ public class DialogueManager : MonoBehaviour {
                     if (activeDialogue.dialogueLines[dialogueLineIndex-1].moneyCost > 0)
                         GameManager.Instance.NumCoins -= activeDialogue.dialogueLines[dialogueLineIndex-1].moneyCost;
 
+                    // No choices, end dialogue!
+                    EndConversation();
+
                     if (activeDialogue.dialogueLines[dialogueLineIndex].positiveChoice)
                     {
-                        SetEndData();
+                        //SetEndData();
                     }
 
-                    // No choices, end dialogue!
-                    EndConversation(); 
+                   
                     
                 }
                 
