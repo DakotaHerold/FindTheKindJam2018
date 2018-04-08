@@ -9,14 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: WorkerConvoNo
+  m_Name: ElderlyManConvo
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: (You keep walking, paying no mind to the young worker.)
+  - line: (You see an elderly man trying to call people over for help, but no one
+      does.)
     source: 0
-    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
-      type: 3}
+    characterPortrait: {fileID: 0}
     moneyCost: 0
-  playerChoice: No
+  playerChoice: 
   isRoot: 0
   choices: []

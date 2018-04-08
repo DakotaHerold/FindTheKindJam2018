@@ -17,7 +17,7 @@ MonoBehaviour:
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Yes, I've been trying to tie this tiesince I left home and I have an interview
+  - line: Yes, I've been trying to tie this tie since I left home and I have an interview
       in 2 minutes!
     source: 3
     characterPortrait: {fileID: 21300000, guid: 7d33956b27cd5be448499db4fa9d13a2,
