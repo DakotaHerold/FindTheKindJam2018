@@ -30,10 +30,9 @@ public class ObjectPool : MonoBehaviour
     void Start()
     {
         parallax = GetComponentInParent<Parallax>();
+        //Debug.Log(parallax);
         CreatePool(pooledPrefabs);
-        
-        
-        /*
+       
         //Create initial roads
         if (pool.Count > 0)
         {
@@ -43,10 +42,13 @@ public class ObjectPool : MonoBehaviour
 
                 toRemove.transform.position = spawnLocation.position + new Vector3(-11.5f * i, 0, 0);
                 toRemove.SetActive(true);
+                toRemove.tag = "temp";
+
+                parallax.Tiles.Add(toRemove.GetComponent<TileScroll>());
 
                 pool.Remove(toRemove);
             }
-        }*/
+        }
 
         GetObject();
     }

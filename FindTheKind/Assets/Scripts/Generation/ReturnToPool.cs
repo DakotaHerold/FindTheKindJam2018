@@ -17,5 +17,10 @@ public class ReturnToPool : MonoBehaviour {
         {
             objectPool.ReturnToPool(coll.gameObject);
         }
+        if(coll.tag == "temp" && tagToReturn == "Chunk")
+        {
+            coll.tag = "Chunk";
+            objectPool.ReturnToPool(coll.gameObject);
+        }
     }
 }
