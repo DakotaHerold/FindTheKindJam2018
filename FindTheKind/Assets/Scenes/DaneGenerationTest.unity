@@ -164,7 +164,7 @@ Prefab:
     - target: {fileID: 114954836836059386, guid: ff04c9c0d7c0245498c8c76e3e3b16e6,
         type: 2}
       propertyPath: pooledPrefabs.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114823460727268414, guid: ff04c9c0d7c0245498c8c76e3e3b16e6,
         type: 2}
@@ -284,6 +284,17 @@ Prefab:
         type: 2}
       propertyPath: pooledPrefabs.Array.data[0].count
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114954836836059386, guid: ff04c9c0d7c0245498c8c76e3e3b16e6,
+        type: 2}
+      propertyPath: pooledPrefabs.Array.data[3].chunk
+      value: 
+      objectReference: {fileID: 1995595366230104, guid: 17bb5147f88b3154890b5613d842b14b,
+        type: 2}
+    - target: {fileID: 114954836836059386, guid: ff04c9c0d7c0245498c8c76e3e3b16e6,
+        type: 2}
+      propertyPath: pooledPrefabs.Array.data[3].count
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff04c9c0d7c0245498c8c76e3e3b16e6, type: 2}
