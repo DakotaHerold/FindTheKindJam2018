@@ -150,7 +150,8 @@ public class GameManager : Singleton<GameManager> {
 
     public void TriggerDialogueEnd()
     {
-        gameState = GAME_STATE.Running; 
+        gameState = GAME_STATE.Running;
+        levelManager.StartLevel();
     }
     #endregion
 }
