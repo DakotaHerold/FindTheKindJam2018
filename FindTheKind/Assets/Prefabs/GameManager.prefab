@@ -52,6 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8425e8bdf8190fc48ae34fcad77a2e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 0}
+  NPCs:
+  - {fileID: 1499609217643174, guid: 07ebf570ad2a4cd41b1ecb29ac4c7b2b, type: 2}
+  - {fileID: 1499609217643174, guid: 07ebf570ad2a4cd41b1ecb29ac4c7b2b, type: 2}
+  - {fileID: 1499609217643174, guid: 07ebf570ad2a4cd41b1ecb29ac4c7b2b, type: 2}
 --- !u!114 &114414000772315056
 MonoBehaviour:
   m_ObjectHideFlags: 1

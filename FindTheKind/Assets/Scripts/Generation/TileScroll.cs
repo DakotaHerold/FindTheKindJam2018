@@ -22,7 +22,6 @@ public class TileScroll : MonoBehaviour {
         {
             NPC = Instantiate(NPC, npcTransform.position, npcTransform.rotation);
             NPC.transform.parent = npcTransform;
-            Debug.Log(this.gameObject.name); 
             return true;
         }
 
