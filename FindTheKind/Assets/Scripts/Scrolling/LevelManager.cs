@@ -66,7 +66,7 @@ public class LevelManager : MonoBehaviour {
 
     public void StartConversation(DialogueData data)
     {
-        DialogueManager.Instance.StartConversation(data);
+        GameManager.Instance.TriggerDialogue(data);
     }
 
     public int TotalCoins
