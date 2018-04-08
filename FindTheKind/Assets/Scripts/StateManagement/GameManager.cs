@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
 
-    public const float LEVEL_TIME = 120; 
+    public const float LEVEL_TIME = 6;//120; 
 
     enum GAME_STATE
     {
@@ -16,6 +16,7 @@ public class GameManager : Singleton<GameManager> {
 
     private GAME_STATE gameState;
     private DialogueManager dialogueManager;
+    private LevelManager levelManager; 
 
     private int numCoins = 0; 
     public int NumCoins { get { return numCoins; } set { numCoins = value; } }
@@ -30,26 +31,35 @@ public class GameManager : Singleton<GameManager> {
 
 	// Use this for initialization
 	void Awake () {
-        gameState = GAME_STATE.Title;
+        gameState = GAME_STATE.Running; // Title
         timer = LEVEL_TIME; 
-        dialogueManager = FindObjectOfType<DialogueManager>(); 
+        dialogueManager = FindObjectOfType<DialogueManager>();
+        levelManager = FindObjectOfType<LevelManager>(); 
 	}
 
     // Update is called once per frame
     void Update()
     {
         if (gameState == GAME_STATE.Running)
-            timer -= Time.deltaTime;
+        {
+            if(timer > 0)
+                timer -= Time.deltaTime;
+            else 
+            {
+                GoToNextLevel(); 
+            }
+        }
+            
     }
 
     public void StartGame()
     {
-
+        //levelManager.StartLevel(); 
     }
 
     public void EndGame()
     {
-
+        gameState = GAME_STATE.GameOver; 
     }
 
     public void RestartGame()
@@ -61,9 +71,10 @@ public class GameManager : Singleton<GameManager> {
     {
         timer = LEVEL_TIME; 
         level += 10; 
-        if(level > 60)
+        if(level > 70)
         {
             // TODO Game Over
+            EndGame(); 
         }
     }
 
