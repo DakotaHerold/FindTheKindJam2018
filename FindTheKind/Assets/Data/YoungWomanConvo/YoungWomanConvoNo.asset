@@ -9,9 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: Data
+  m_Name: YoungWomanConvoNo
   m_EditorClassIdentifier: 
-  dialogueLines: []
-  playerChoice: 
+  dialogueLines:
+  - line: (You join the crowd and keep walking.)
+    source: 0
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
+    moneyCost: 0
+  playerChoice: Ignore
   isRoot: 0
   choices: []

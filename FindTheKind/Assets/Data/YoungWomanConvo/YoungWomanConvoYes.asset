@@ -11,7 +11,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
   m_Name: YoungWomanConvoYes
   m_EditorClassIdentifier: 
-  dialogueLines: []
-  playerChoice: 
+  dialogueLines:
+  - line: (You walk over and hear the man insulting the young woman.)
+    source: 0
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
+    moneyCost: 0
+  - line: Excuse me, is this man bothering you?
+    source: 0
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
+    moneyCost: 0
+  - line: Yes, I was just talking on the phone and this man started telling me that
+      I don't belong here.
+    source: 2
+    characterPortrait: {fileID: 21300000, guid: 61fef11fd0edf0e40911eddab871236d,
+      type: 3}
+    moneyCost: 0
+  - line: (You turn to the man, who is visibly angry).
+    source: 0
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
+    moneyCost: 0
+  - line: (You scold the man and console the woman, hurrying on your way.)
+    source: 0
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
+    moneyCost: 0
+  playerChoice: Help
   isRoot: 0
   choices: []
