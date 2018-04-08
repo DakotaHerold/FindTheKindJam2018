@@ -9,17 +9,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: WorkerConversation
+  m_Name: MerchantConvoNo
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: (As you're walking, you notice a young businessman struggling to tie his
-      tie.)
+  - line: No, sorry, I don't have a lot of money and I'm late for work.
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  playerChoice: Do you go over and offer to help?
-  isRoot: 1
-  choices:
-  - {fileID: 11400000, guid: 366f730dccf3977429f1de203ddbe357, type: 2}
-  - {fileID: 11400000, guid: e99a0d269ae7fd046bec264e7c17d615, type: 2}
+  - line: Oh okay, maybe next time.
+    source: 6
+    characterPortrait: {fileID: 21300000, guid: 95e43f9fff5b25c4da0a52ceb8856b1f,
+      type: 3}
+    moneyCost: 0
+  playerChoice: No
+  isRoot: 0
+  choices: []
