@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
     
-    public const float LEVEL_TIME = 10;//120; 
-    public const int SPAWN_INTERVAL = 5;
+    public const float LEVEL_TIME = 60;//120; 
+    public const int SPAWN_INTERVAL = 30;
 
     bool isAllowedToSpawn = true; 
 

@@ -424,27 +424,54 @@ public class DialogueManager : MonoBehaviour {
         }
     }
 
+    void ThanksForPlayingDialogue()
+    {
+        // Open panels 
+        NamePanel.SetActive(true);
+        DialoguePanel.SetActive(true);
+
+        activeSpeaker = DialogueSource.Business_Man;
+        NPC_PortraitPanel.SetActive(false);
+        PC_PortraitPanel.SetActive(true);
+
+        string nameString = DialogueSource.Business_Man.ToString();
+        nameString = nameString.Replace('_', ' ');
+        NamePanel.GetComponentInChildren<Text>().text = nameString;
+
+        string textToType = "Thanks for playing!";
+
+        if (typingText)
+        {
+            StopCoroutine(typeRoutine);
+            boxText.text = textToType;
+            typingText = false;
+        }
+        else
+        {
+            typeRoutine = TypeText(textToType);
+            StartCoroutine(typeRoutine);
+        }
+    }
+
     void CycleEndDialogue()
     {
-        if (dialogueLineIndex < peopleSpokenTo.Count)
+        if(peopleSpokenTo.Count < 1)
         {
-            activeSpeaker = peopleSpokenTo[dialogueLineIndex].source;
-            NPC_PortraitPanel.SetActive(true);
-            NPC_Image.sprite = peopleSpokenTo[dialogueLineIndex].characterPortrait; 
-            PC_PortraitPanel.SetActive(false);
+            activeSpeaker = DialogueSource.Business_Man;
+            NPC_PortraitPanel.SetActive(false);
+            PC_PortraitPanel.SetActive(true);
 
-            string nameString = peopleSpokenTo[dialogueLineIndex].source.ToString();
+            string nameString = DialogueSource.Business_Man.ToString();
             nameString = nameString.Replace('_', ' ');
             NamePanel.GetComponentInChildren<Text>().text = nameString;
 
-            string textToType = peopleSpokenTo[dialogueLineIndex].line;
+            string textToType = "Wow... No one came to my funeral. Maybe I'll change my ways in the next playthrough...";
 
             if (typingText)
             {
                 StopCoroutine(typeRoutine);
                 boxText.text = textToType;
                 typingText = false;
-                dialogueLineIndex++;
             }
             else
             {
@@ -454,11 +481,41 @@ public class DialogueManager : MonoBehaviour {
         }
         else
         {
-            inFinalDialogue = false;
-            
-            GameManager.Instance.RestartGame();
-            peopleSpokenTo = new List<DialogueData.DialoguePiece>();
+            if (dialogueLineIndex < peopleSpokenTo.Count)
+            {
+                activeSpeaker = peopleSpokenTo[dialogueLineIndex].source;
+                NPC_PortraitPanel.SetActive(true);
+                NPC_Image.sprite = peopleSpokenTo[dialogueLineIndex].characterPortrait;
+                PC_PortraitPanel.SetActive(false);
+
+                string nameString = peopleSpokenTo[dialogueLineIndex].source.ToString();
+                nameString = nameString.Replace('_', ' ');
+                NamePanel.GetComponentInChildren<Text>().text = nameString;
+
+                string textToType = peopleSpokenTo[dialogueLineIndex].line;
+
+                if (typingText)
+                {
+                    StopCoroutine(typeRoutine);
+                    boxText.text = textToType;
+                    typingText = false;
+                    dialogueLineIndex++;
+                }
+                else
+                {
+                    typeRoutine = TypeText(textToType);
+                    StartCoroutine(typeRoutine);
+                }
+            }
+            else
+            {
+                inFinalDialogue = false;
+                ThanksForPlayingDialogue();
+                //GameManager.Instance.RestartGame();
+                peopleSpokenTo = new List<DialogueData.DialoguePiece>();
+            }
         }
+        
     }
 
     public void DisableConvoHud()
