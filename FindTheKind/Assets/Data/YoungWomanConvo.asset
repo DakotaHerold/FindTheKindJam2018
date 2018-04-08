@@ -24,4 +24,6 @@ MonoBehaviour:
     moneyCost: 0
   playerChoice: Do you step in to help or turn a blind eye?
   isRoot: 1
-  choices: []
+  choices:
+  - {fileID: 11400000, guid: f474de7d008096d43b69f3cce4cfa473, type: 2}
+  - {fileID: 11400000, guid: 6142e2537b616364d92afb790cb142ea, type: 2}
