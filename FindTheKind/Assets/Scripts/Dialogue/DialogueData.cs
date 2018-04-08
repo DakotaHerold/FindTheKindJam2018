@@ -8,6 +8,7 @@ public enum DialogueSource
     Business_Man,
     Soccer_Mom,
     Young_Woman, 
+    Young_Worker,
     Little_Boy, 
     Little_Girl, 
     Merchant, 

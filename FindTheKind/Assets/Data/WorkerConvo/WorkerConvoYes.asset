@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
+  m_Name: WorkerConvoYes
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - line: Excuse me, do you need help?
+    source: 0
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
+    moneyCost: 0
+  - line: Yes, I've been trying to tie this tie since I left home and I have an interview
+      in 2 minutes!
+    source: 3
+    characterPortrait: {fileID: 21300000, guid: 7d33956b27cd5be448499db4fa9d13a2,
+      type: 3}
+    moneyCost: 0
+  - line: (You tie his tie and wish him luck.)
+    source: 0
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
+    moneyCost: 0
+  - line: Thank you sir! Your're a life saver.
+    source: 3
+    characterPortrait: {fileID: 21300000, guid: 7d33956b27cd5be448499db4fa9d13a2,
+      type: 3}
+    moneyCost: 0
+  playerChoice: Yes
+  isRoot: 0
+  choices: []
