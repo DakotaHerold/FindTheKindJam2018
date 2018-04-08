@@ -863,7 +863,7 @@ Transform:
   m_Children:
   - {fileID: 4062239917153502}
   m_Father: {fileID: 4570591394251882}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4570591394251882
 Transform:
@@ -878,8 +878,8 @@ Transform:
   - {fileID: 4690145691117126}
   - {fileID: 4397800273432368}
   - {fileID: 4454210778929996}
-  - {fileID: 4859729989160974}
   - {fileID: 4533828081627416}
+  - {fileID: 4859729989160974}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1023,7 +1023,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4570591394251882}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4903793433827486
 Transform:
@@ -2072,7 +2072,7 @@ MonoBehaviour:
   scrollSpeed: 0.08
   pooledPrefabs:
   - chunk: {fileID: 1369749643827168, guid: 0d2c4cd7126e2274183ad666def89537, type: 2}
-    count: 3
+    count: 6
 --- !u!114 &114836073011617106
 MonoBehaviour:
   m_ObjectHideFlags: 1
