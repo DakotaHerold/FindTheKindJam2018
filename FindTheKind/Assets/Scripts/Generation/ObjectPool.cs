@@ -93,6 +93,7 @@ public class ObjectPool : MonoBehaviour
 
             pool.Remove(toRemove);
 
+            parallax.SetMostRecentTile(toRemove); 
             parallax.Tiles.Add(toRemove.GetComponent<TileScroll>());
 
             return toRemove;

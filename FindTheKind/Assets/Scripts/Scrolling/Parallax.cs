@@ -11,6 +11,8 @@ public class Parallax : MonoBehaviour {
     private float backgroundWidth;
     private float screenEdge, scrollSpeed;
 
+    public GameObject mostRecentTile; 
+
     // Use this for initialization
     public void Initialize () {
         tiles = new List<TileScroll>(GetComponentsInChildren<TileScroll>());
@@ -72,5 +74,10 @@ public class Parallax : MonoBehaviour {
         }
 
         return value;
+    }
+
+    public void SetMostRecentTile(GameObject recentTile)
+    {
+        mostRecentTile = recentTile; 
     }
 }

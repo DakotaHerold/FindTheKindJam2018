@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour {
         parallaxLayers[0].ScrollSpeed = slowestSpeed;
         parallaxLayers[1].ScrollSpeed = speedChange + slowestSpeed;
         parallaxLayers[2].ScrollSpeed = (2 * speedChange) + slowestSpeed;
-        parallaxLayers[3].ScrollSpeed = (2 * speedChange) + slowestSpeed;
+        parallaxLayers[3].ScrollSpeed = (2 * speedChange) + slowestSpeed; // game space parallax 
     }
 
     public void PauseLevel()
