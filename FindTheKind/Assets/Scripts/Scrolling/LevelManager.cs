@@ -26,9 +26,9 @@ public class LevelManager : MonoBehaviour {
         player.State = CharacterState.Run;
 
         parallaxLayers[0].ScrollSpeed = slowestSpeed;
-        parallaxLayers[1].ScrollSpeed = speedChange + slowestSpeed;
+        parallaxLayers[1].ScrollSpeed = speedChange + slowestSpeed; // game space parallax 
         parallaxLayers[2].ScrollSpeed = (2 * speedChange) + slowestSpeed;
-        parallaxLayers[3].ScrollSpeed = (2 * speedChange) + slowestSpeed;
+        parallaxLayers[3].ScrollSpeed = (2 * speedChange) + slowestSpeed; 
     }
 
     public void PauseLevel()
@@ -52,6 +52,13 @@ public class LevelManager : MonoBehaviour {
         {
             PauseLevel();
         }
+    }
+
+    public bool SpawnNPC(GameObject NPC)
+    {
+        GameObject tile = parallaxLayers[1].mostRecentTile;
+
+        return tile.GetComponent<TileScroll>().SpawnNPC(NPC);
     }
 
     public void StartConversation(DialogueData data)
