@@ -8,7 +8,63 @@ public class DialogueManager : MonoBehaviour {
     public GameObject NamePanel;
     public GameObject DialoguePanel;
     public GameObject PC_PortraitPanel; 
-    public GameObject NPC_PortraitPanel; 
+    public GameObject NPC_PortraitPanel;
+
+    [Space(20)]
+    // Top HUD
+    public GameObject CoinMeter;
+    public GameObject LevelTitle;
+    public GameObject Timer;
+
+    [Space(30)]
+
+    // End Game Refs 
+    [TextArea]
+    public string businessManEndLine;
+
+    public Sprite soccermom_characterPortrait;
+    [TextArea]
+    public string soccermom_endLine;
+
+    public Sprite youngwoman_characterPortrait;
+    [TextArea]
+    public string youngwoman_endLine;
+
+    public Sprite youngworker_characterPortrait;
+    [TextArea]
+    public string youngworker_endLine;
+
+    public Sprite littleboy_characterPortrait;
+    [TextArea]
+    public string littleboy_endLine;
+
+    public Sprite littlegirl_characterPortrait;
+    [TextArea]
+    public string littlegirl_endLine;
+
+    public Sprite merchant_characterPortrait;
+    [TextArea]
+    public string merchant_endLine;
+
+    public Sprite grunge_characterPortrait;
+    [TextArea]
+    public string grunge_endLine;
+
+    public Sprite cityman_characterPortrait;
+    [TextArea]
+    public string cityman_endLine;
+
+    public Sprite elderlyman_characterPortrait;
+    [TextArea]
+    public string elderlyman_endLine;
+
+    public Sprite elderlywoman_characterPortrait;
+    [TextArea]
+    public string elderlywoman_endLine;
+
+
+
+
 
     private Text boxText;
     private Image NPC_Image; 
@@ -22,10 +78,11 @@ public class DialogueManager : MonoBehaviour {
 
     private IEnumerator typeRoutine;
 
-    DialogueData activeDialogue;
+    private DialogueData activeDialogue;
 
-    // Temp
-    public DialogueData testDialogue; 
+    // End Game
+    private List<DialogueData.DialoguePiece> peopleSpokenTo;
+    public List<string> endGameLines; 
 
     private void Start()
     {
@@ -36,9 +93,9 @@ public class DialogueManager : MonoBehaviour {
         NamePanel.SetActive(false);
         DialoguePanel.SetActive(false);
         NPC_PortraitPanel.SetActive(false);
-        PC_PortraitPanel.SetActive(false); 
-        //Temp 
-        //StartConversation(testDialogue); 
+        PC_PortraitPanel.SetActive(false);
+
+        EnableStartGameHud(); 
     }
 
     private void Update()
@@ -105,10 +162,74 @@ public class DialogueManager : MonoBehaviour {
         GameManager.Instance.TriggerDialogueEnd(); 
     }
 
+    public void DisableStartGameHud()
+    {
+        CoinMeter.SetActive(false);
+        LevelTitle.SetActive(false);
+        Timer.SetActive(false);
+    }
+
+    public void EnableStartGameHud()
+    {
+        CoinMeter.SetActive(true);
+        LevelTitle.SetActive(true);
+        Timer.SetActive(true);
+    }
+
     void SetActiveDialogue (DialogueData data)
     {
         dialogueLineIndex = 0;
-        activeDialogue = data; 
+        activeDialogue = data;
+
+        DialogueData.DialoguePiece newPiece = new DialogueData.DialoguePiece();
+        //newPiece.characterPortrait = 
+        //newPiece.line = ;
+        newPiece.source = activeDialogue.whoStartedConversation;
+
+        switch(newPiece.source)
+        {
+            case DialogueSource.City_Man:
+                newPiece.line = cityman_endLine;
+                newPiece.characterPortrait = cityman_characterPortrait; 
+                break;
+            case DialogueSource.Elderly_Man:
+                newPiece.line = cityman_endLine;
+                newPiece.characterPortrait = cityman_characterPortrait;
+                break;
+            case DialogueSource.Elderly_Woman:
+                newPiece.line = cityman_endLine;
+                newPiece.characterPortrait = cityman_characterPortrait;
+                break;
+            case DialogueSource.Grunge_Girl:
+                newPiece.line = cityman_endLine;
+                newPiece.characterPortrait = cityman_characterPortrait;
+                break;
+            case DialogueSource.Little_Boy:
+                newPiece.line = cityman_endLine;
+                newPiece.characterPortrait = cityman_characterPortrait;
+                break;
+            case DialogueSource.Little_Girl:
+                newPiece.line = cityman_endLine;
+                newPiece.characterPortrait = cityman_characterPortrait;
+                break;
+            case DialogueSource.Merchant:
+                newPiece.line = cityman_endLine;
+                newPiece.characterPortrait = cityman_characterPortrait;
+                break;
+            case DialogueSource.Soccer_Mom:
+                newPiece.line = cityman_endLine;
+                newPiece.characterPortrait = cityman_characterPortrait;
+                break;
+            case DialogueSource.Young_Woman:
+                newPiece.line = cityman_endLine;
+                newPiece.characterPortrait = cityman_characterPortrait;
+                break;
+            case DialogueSource.Young_Worker:
+                newPiece.line = cityman_endLine;
+                newPiece.characterPortrait = cityman_characterPortrait;
+                break; 
+        }
+        peopleSpokenTo.Add(newPiece); 
     }
 
     void CycleDialogue()
