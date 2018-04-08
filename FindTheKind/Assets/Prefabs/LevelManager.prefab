@@ -1974,14 +1974,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speedChange: 1.5
+  speedChange: 0.75
   slowestSpeed: 2.5
   screenEdge: -30
   parallaxLayers:
   - {fileID: 114292747046204876}
-  - {fileID: 114984662168533110}
-  - {fileID: 114175499125090584}
   - {fileID: 114706248497803042}
+  - {fileID: 114175499125090584}
+  - {fileID: 114984662168533110}
   soundManager: {fileID: 114507818850814406}
 --- !u!114 &114706248497803042
 MonoBehaviour:

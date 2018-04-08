@@ -25,10 +25,10 @@ public class LevelManager : MonoBehaviour {
     {
         player.State = CharacterState.Run;
 
-        for(int i = 0; i < parallaxLayers.Length; i++)
-        {
-            parallaxLayers[i].ScrollSpeed = (i * speedChange) + slowestSpeed;
-        }
+        parallaxLayers[0].ScrollSpeed = slowestSpeed;
+        parallaxLayers[1].ScrollSpeed = speedChange + slowestSpeed;
+        parallaxLayers[2].ScrollSpeed = (2 * speedChange) + slowestSpeed;
+        parallaxLayers[3].ScrollSpeed = (2 * speedChange) + slowestSpeed;
     }
 
     public void PauseLevel()
