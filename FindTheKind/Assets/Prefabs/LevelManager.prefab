@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1029615978580192
 GameObject:
   m_ObjectHideFlags: 1
@@ -113,7 +113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1110966710768500
 GameObject:
   m_ObjectHideFlags: 1
@@ -164,7 +164,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1166501343328758
 GameObject:
   m_ObjectHideFlags: 1
@@ -199,7 +199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1216719196882908
 GameObject:
   m_ObjectHideFlags: 1
@@ -235,7 +235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1298801469903264
 GameObject:
   m_ObjectHideFlags: 1
@@ -254,7 +254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1336950002351378
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 114706248497803042}
   m_Layer: 0
   m_Name: GameSpace
-  m_TagString: Untagged
+  m_TagString: GameSpace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,7 +321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1436008618327748
 GameObject:
   m_ObjectHideFlags: 1
@@ -357,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1517098758936916
 GameObject:
   m_ObjectHideFlags: 1
@@ -456,7 +456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1635267861538094
 GameObject:
   m_ObjectHideFlags: 1
@@ -475,7 +475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1649217806072124
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1978202802399422
 GameObject:
   m_ObjectHideFlags: 1
@@ -1511,7 +1511,8 @@ AudioSource:
   m_GameObject: {fileID: 1649217806072124}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1794,6 +1795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundWidth: 0
+  mostRecentTile: {fileID: 0}
 --- !u!114 &114213469541082172
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1805,7 +1807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 0}
 --- !u!114 &114222557827564474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1820,6 +1822,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 4733341372184202}
   randomOffset: 1
   generateChunk: 0
+  sky: 0
   scrollSpeed: 0.08
   pooledPrefabs:
   - chunk: {fileID: 1601655274277064, guid: 4f9777761a039f04bad69fe1d5b30f12, type: 2}
@@ -1841,7 +1844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 0}
 --- !u!114 &114273933780265662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1866,6 +1869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundWidth: 0
+  mostRecentTile: {fileID: 0}
 --- !u!114 &114368190549361520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1877,7 +1881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 0}
 --- !u!114 &114403361675942624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1904,10 +1908,23 @@ MonoBehaviour:
   spawnLocation: {fileID: 4222837506655022}
   randomOffset: 0
   generateChunk: 1
+  sky: 0
   scrollSpeed: 0.1
   pooledPrefabs:
   - chunk: {fileID: 1336350978078928, guid: 2ffb3d0ad5116d2439b5123659c123b3, type: 2}
-    count: 8
+    count: 3
+  - chunk: {fileID: 1333944439446010, guid: 26e0144a306509b4eb4d70f83ac52145, type: 2}
+    count: 4
+  - chunk: {fileID: 1379182323485028, guid: ea0614c7ad3fcb94da31f19c90ac8e45, type: 2}
+    count: 4
+  - chunk: {fileID: 1910123673963416, guid: 338ccca0e2d6be0448df966c9cca64e5, type: 2}
+    count: 4
+  - chunk: {fileID: 1388362358542362, guid: daf029d2afb04d44cb27885f7760e8a3, type: 2}
+    count: 4
+  - chunk: {fileID: 1492389682457044, guid: c753d993cc8d25542aabf3d5ae2afd9f, type: 2}
+    count: 4
+  - chunk: {fileID: 1264235622942944, guid: 97cc1f264be57324287517c2cb29cff4, type: 2}
+    count: 4
 --- !u!114 &114507818850814406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1949,7 +1966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 0}
 --- !u!114 &114649693109195504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1961,7 +1978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 0}
 --- !u!114 &114660753986281790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1979,10 +1996,12 @@ MonoBehaviour:
   screenEdge: -30
   parallaxLayers:
   - {fileID: 114292747046204876}
-  - {fileID: 114706248497803042}
-  - {fileID: 114175499125090584}
   - {fileID: 114984662168533110}
+  - {fileID: 114175499125090584}
+  - {fileID: 114706248497803042}
   soundManager: {fileID: 114507818850814406}
+  hud: {fileID: 0}
+  gameSpace: {fileID: 0}
 --- !u!114 &114706248497803042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1995,6 +2014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundWidth: 0
+  mostRecentTile: {fileID: 0}
 --- !u!114 &114713947752491056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2006,7 +2026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 0}
 --- !u!114 &114768888615585158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2054,7 +2074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 0}
 --- !u!114 &114823460727268414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2069,6 +2089,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 4850637338745940}
   randomOffset: 0
   generateChunk: 0
+  sky: 0
   scrollSpeed: 0.08
   pooledPrefabs:
   - chunk: {fileID: 1369749643827168, guid: 0d2c4cd7126e2274183ad666def89537, type: 2}
@@ -2084,7 +2105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 0}
 --- !u!114 &114844696076911714
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2120,7 +2141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 0}
 --- !u!114 &114917000952660324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2132,7 +2153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 0}
 --- !u!114 &114954836836059386
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2147,6 +2168,7 @@ MonoBehaviour:
   spawnLocation: {fileID: 4253948455320654}
   randomOffset: 1
   generateChunk: 0
+  sky: 0
   scrollSpeed: 0.09
   pooledPrefabs:
   - chunk: {fileID: 1732265633397822, guid: 4a823c7f62c6b534ba24735fab0d4c99, type: 2}
@@ -2169,6 +2191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backgroundWidth: 0
+  mostRecentTile: {fileID: 0}
 --- !u!212 &212007230842267080
 SpriteRenderer:
   m_ObjectHideFlags: 1
