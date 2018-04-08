@@ -18,7 +18,7 @@ public class ObjectPool : MonoBehaviour
 
     private Parallax parallax;
 
-    [SerializeField] private bool randomOffset;
+    [SerializeField] private bool randomOffset, generateChunk;
 
     [SerializeField] private float scrollSpeed;
 
@@ -40,7 +40,7 @@ public class ObjectPool : MonoBehaviour
             for (int i = 1; i <= 2; i++)
             {
                 GameObject toRemove;
-                if (randomOffset)
+                if (!generateChunk)
                 {
                     toRemove = pool[Random.Range(0, pool.Count)];
                 }

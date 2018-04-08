@@ -11,6 +11,7 @@ TagManager:
   - Sidewalk
   - Tree
   - temp
+  - Sky
   layers:
   - Default
   - TransparentFX
