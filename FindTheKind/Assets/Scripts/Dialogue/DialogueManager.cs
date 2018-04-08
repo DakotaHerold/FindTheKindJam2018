@@ -116,7 +116,7 @@ public class DialogueManager : MonoBehaviour {
     private DialogueData activeDialogue;
 
     // End Game
-    public List<DialogueData.DialoguePiece> peopleSpokenTo;
+    private List<DialogueData.DialoguePiece> peopleSpokenTo;
     private bool inFinalDialogue = false; 
 
     private void Start()
@@ -206,7 +206,7 @@ public class DialogueManager : MonoBehaviour {
         DialoguePanel.SetActive(false);
         NPC_PortraitPanel.SetActive(false);
         PC_PortraitPanel.SetActive(false); 
-        activeDialogue = null;
+        
         GameManager.Instance.TriggerDialogueEnd(); 
     }
 
@@ -370,13 +370,17 @@ public class DialogueManager : MonoBehaviour {
                     // No choices, end dialogue!
                     EndConversation();
 
-                    if (activeDialogue.dialogueLines[dialogueLineIndex].positiveChoice)
+                    int index = activeDialogue.dialogueLines.Count - 1;
+                    if (index < 1)
+                        index = 0; 
+
+                    if (activeDialogue.dialogueLines[index].positiveChoice)
                     {
-                        //SetEndData();
+                        SetEndData();
                     }
 
-                   
-                    
+                    activeDialogue = null;
+
                 }
                 
             }
