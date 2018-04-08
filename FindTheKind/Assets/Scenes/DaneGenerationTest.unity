@@ -559,6 +559,12 @@ Prefab:
       propertyPath: pooledPrefabs.Array.data[6].count
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 82383592277163280, guid: ff04c9c0d7c0245498c8c76e3e3b16e6,
+        type: 2}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24301952, guid: 0ac7fb39e445048d89688f69c2a1839a,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff04c9c0d7c0245498c8c76e3e3b16e6, type: 2}
   m_IsPrefabParent: 0
@@ -702,12 +708,12 @@ Prefab:
     - target: {fileID: 224286506933863134, guid: 240216962a911134fbe0e2384d4479a8,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 609
+      value: 329
       objectReference: {fileID: 0}
     - target: {fileID: 224286506933863134, guid: 240216962a911134fbe0e2384d4479a8,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 308.5
+      value: 185
       objectReference: {fileID: 0}
     - target: {fileID: 224286506933863134, guid: 240216962a911134fbe0e2384d4479a8,
         type: 2}
@@ -917,17 +923,17 @@ Prefab:
     - target: {fileID: 224125378873284310, guid: 240216962a911134fbe0e2384d4479a8,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 125.63199
+      value: 139.45631
       objectReference: {fileID: 0}
     - target: {fileID: 224386582926337594, guid: 240216962a911134fbe0e2384d4479a8,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 125.63199
+      value: 139.45631
       objectReference: {fileID: 0}
     - target: {fileID: 224574781517117992, guid: 240216962a911134fbe0e2384d4479a8,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 125.63199
+      value: 139.45631
       objectReference: {fileID: 0}
     - target: {fileID: 224125378873284310, guid: 240216962a911134fbe0e2384d4479a8,
         type: 2}
