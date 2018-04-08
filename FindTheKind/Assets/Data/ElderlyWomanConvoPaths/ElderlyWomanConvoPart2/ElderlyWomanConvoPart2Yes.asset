@@ -9,21 +9,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: SoccerMomConvo
+  m_Name: ElderlyWomanConvoPart2Yes
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: (You nearly bump into a woman trying to hand out pamphlets.)
+  - line: Of course, get home safely.
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
-    moneyCost: 0
-  - line: (You notice no one else is stopping to take one.)
-    source: 0
-    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+    moneyCost: 5
+  - line: Oh bless your soul!
+    source: 9
+    characterPortrait: {fileID: 21300000, guid: ca695f3d1e28e2440a7f3c60b720940a,
       type: 3}
     moneyCost: 0
-  playerChoice: Should you stop and take a pamphlet?
-  isRoot: 1
-  choices:
-  - {fileID: 11400000, guid: 914263b2ddf9dd645b2c2ec646b3b746, type: 2}
-  - {fileID: 11400000, guid: 27e3c80446d85dc4fb97f58bd26d4fe9, type: 2}
+  playerChoice: Buy a ticket.
+  isRoot: 0
+  choices: []

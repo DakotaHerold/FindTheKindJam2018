@@ -9,22 +9,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: CityManConvo
+  m_Name: ElderlyWomanConvoPart2No
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: (A dangerous looking man approaches you.)
+  - line: Sorry, I need to go.
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Hey man.. I'm about to go on a date with a girl I really like. Could you
-      spare a minute to give me some advice?
-    source: 8
-    characterPortrait: {fileID: 21300000, guid: 12291c083902a9046a936b7750aea302,
+  - line: Oh dear, I don't know what I'll do..
+    source: 9
+    characterPortrait: {fileID: 21300000, guid: ca695f3d1e28e2440a7f3c60b720940a,
       type: 3}
     moneyCost: 0
-  playerChoice: Do you help him?
-  isRoot: 1
-  choices:
-  - {fileID: 11400000, guid: 7870c308f4fa39742bb85af44f98e522, type: 2}
-  - {fileID: 11400000, guid: 077ee0347b5572f4d9acb3f1cfbd34bf, type: 2}
+  playerChoice: Keep walking.
+  isRoot: 0
+  choices: []
