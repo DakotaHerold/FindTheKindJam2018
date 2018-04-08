@@ -393,7 +393,7 @@ public class DialogueManager : MonoBehaviour {
         NPC_PortraitPanel.SetActive(false);
         PC_PortraitPanel.SetActive(true);
 
-        string nameString = DialogueSource.Business_Man.source.ToString();
+        string nameString = DialogueSource.Business_Man.ToString();
         nameString = nameString.Replace('_', ' ');
         NamePanel.GetComponentInChildren<Text>().text = nameString;
 
