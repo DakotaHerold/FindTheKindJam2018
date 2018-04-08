@@ -13,10 +13,14 @@ public class Player : MonoBehaviour {
 
     [SerializeField]
     private float maxMoveSpeed, acceleration, decelerationMultiplier, laneTime, laneHeight, rightBound, leftBound;
-    private float moveSpeed = 0;
+    private float moveSpeed = 0, stepTime = 0.5f, timePassed = 0f;
     private bool switchingLanes;
     [SerializeField]
+    private SoundManager soundManager;
+    [SerializeField]
     private int lane;
+    [SerializeField]
+    private SoundClip[] stepClips;
     private CharacterState currentState = CharacterState.Idle;
     private Animator anim;
 
@@ -41,6 +45,7 @@ public class Player : MonoBehaviour {
             animMultiplier = 0.3f;
         }
 
+        UpdateAudio(Time.deltaTime, animMultiplier);
         anim.SetFloat("SpeedMultiplier", animMultiplier);
     }
 
@@ -143,6 +148,18 @@ public class Player : MonoBehaviour {
         }
 
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+    }
+
+    public void UpdateAudio(float deltaTime, float animMultiplier)
+    {
+        timePassed += deltaTime;
+
+        if(timePassed >= stepTime * animMultiplier)
+        {
+            timePassed = 0;
+            SoundClip step = stepClips[Random.Range(0, stepClips.Length)];
+            soundManager.Play(step);
+        }
     }
 
     public void Decelerate()

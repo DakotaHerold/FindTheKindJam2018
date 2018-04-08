@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
-
-    private int totalCoins;
+    
     [SerializeField]
     private Player player;
     [SerializeField]
@@ -64,11 +63,11 @@ public class LevelManager : MonoBehaviour {
     {
         get
         {
-            return totalCoins;
+            return GameManager.Instance.NumCoins;
         }
         set
         {
-            totalCoins = value;
+            GameManager.Instance.NumCoins = value;
         }
     }
 }
