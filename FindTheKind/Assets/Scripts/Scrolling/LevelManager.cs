@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
-    
+
     [SerializeField]
     private Player player;
     [SerializeField]
@@ -34,16 +34,17 @@ public class LevelManager : MonoBehaviour {
 
     public void StartLevel()
     {
-        player.State = CharacterState.Run;
-        hud.gameObject.SetActive(true);
-        hud.ShowHud();
-
         parallaxLayers[0].ScrollSpeed = slowestSpeed;
         parallaxLayers[1].ScrollSpeed = speedChange + slowestSpeed; // game space parallax 
         parallaxLayers[2].ScrollSpeed = (2 * speedChange) + slowestSpeed;
-        parallaxLayers[3].ScrollSpeed = (2 * speedChange) + slowestSpeed; 
+        parallaxLayers[3].ScrollSpeed = (2 * speedChange) + slowestSpeed;
+    }
 
-        
+    public void ShowHud()
+    {
+        player.State = CharacterState.Run;
+        hud.gameObject.SetActive(true);
+        hud.ShowHud();
     }
 
     public void PauseLevel()
@@ -53,19 +54,6 @@ public class LevelManager : MonoBehaviour {
         for (int i = 0; i < parallaxLayers.Length; i++)
         {
             parallaxLayers[i].ScrollSpeed = 0;
-        }
-    }
-
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            StartLevel();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PauseLevel();
         }
     }
 

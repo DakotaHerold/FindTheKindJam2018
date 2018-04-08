@@ -69,7 +69,8 @@ public class GameManager : Singleton<GameManager> {
 
     public void StartGame()
     {
-        gameState = GAME_STATE.Running; 
+        gameState = GAME_STATE.Running;
+        levelManager.ShowHud();
         levelManager.StartLevel();
     }
 
