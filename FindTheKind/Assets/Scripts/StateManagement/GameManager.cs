@@ -119,16 +119,19 @@ public class GameManager : Singleton<GameManager> {
 
     public void TalkedToNPC(GameObject NPC)
     {
-        for(int i = 0; i < notTalkedTo.Count; i++)
+        string output = "Removed: ";
+
+        for (int i = 0; i < notTalkedTo.Count; i++)
         {
             if (notTalkedTo[i].GetComponent<Person>().Data == NPC.GetComponent<Person>().Data)
             {
+                output += notTalkedTo[i].name + "\n";
                 talkedTo.Add(notTalkedTo[i]);
                 notTalkedTo.Remove(notTalkedTo[i]);
             }
         }
 
-        string output = "Spoken to NPCs: \n";
+        output +=  "Spoken to NPCs: \n";
 
         foreach (GameObject npc in talkedTo)
         {
