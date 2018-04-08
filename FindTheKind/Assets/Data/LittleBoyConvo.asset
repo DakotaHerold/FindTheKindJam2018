@@ -9,17 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: ElderlyManConvo
+  m_Name: LittleBoyConvo
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: (You see an elderly man trying to call people over for help, but no one
-      does.)
+  - line: (You see a boy sitting on the curb, crying. He seems to be alone.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  playerChoice: Do you go over and help?
+  playerChoice: Do you ask if he needs help?
   isRoot: 1
   choices:
-  - {fileID: 11400000, guid: 83158fbecb42dba49b67fb1ae6e849f5, type: 2}
-  - {fileID: 11400000, guid: ad3dc256d8f6a1f469663f3d9d0b24e4, type: 2}
+  - {fileID: 11400000, guid: 99b1ed9612ae37443a60ba79a5e9b98c, type: 2}
+  - {fileID: 11400000, guid: 2aa17fa1883bc0d48bb965e61f94a961, type: 2}

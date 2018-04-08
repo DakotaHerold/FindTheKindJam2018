@@ -9,17 +9,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: ElderlyManConvo
+  m_Name: ElderlyManConvoNo
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: (You see an elderly man trying to call people over for help, but no one
-      does.)
+  - line: (You continue walking, ignoring the man's beckoning.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  playerChoice: Do you go over and help?
-  isRoot: 1
-  choices:
-  - {fileID: 11400000, guid: 83158fbecb42dba49b67fb1ae6e849f5, type: 2}
-  - {fileID: 11400000, guid: ad3dc256d8f6a1f469663f3d9d0b24e4, type: 2}
+  playerChoice: Keep Walking
+  isRoot: 0
+  choices: []
