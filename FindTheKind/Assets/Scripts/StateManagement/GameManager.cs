@@ -56,7 +56,6 @@ public class GameManager : Singleton<GameManager> {
                 if(Mathf.RoundToInt(timer) % SPAWN_INTERVAL == 0 && !isAllowedToSpawn)
                 {
                     isAllowedToSpawn = true; 
-                    Debug.Log("Spawning npc");
                     SpawnNpc();
                 }
             }

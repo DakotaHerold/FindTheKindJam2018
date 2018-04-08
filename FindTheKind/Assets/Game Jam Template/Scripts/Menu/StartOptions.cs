@@ -28,7 +28,7 @@ public class StartOptions : MonoBehaviour {
     public GameObject GameHud; 
 
 
-    void Awake()
+    void Start()
 	{
 		//Get a reference to ShowPanels attached to UI object
 		showPanels = GetComponent<ShowPanels> ();

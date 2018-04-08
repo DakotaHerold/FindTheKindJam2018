@@ -13,12 +13,6 @@ public class HudStates : MonoBehaviour {
         foreach (GameObject panel in panels)
         {
             panel.SetActive(true);
-            foreach (Image i in panel.GetComponentsInChildren<Image>())
-            {
-                Color color = i.color;
-                color.a = 1;
-                i.color = color;
-            }
         }
     }
 }
