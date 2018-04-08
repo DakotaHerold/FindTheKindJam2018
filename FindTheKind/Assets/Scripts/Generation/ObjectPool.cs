@@ -83,7 +83,12 @@ public class ObjectPool : MonoBehaviour
             GameObject toRemove = pool[Random.Range(0, pool.Count)];
 
             toRemove.transform.position = spawnLocation.position + (randomOffset ? new Vector3(Random.Range(-1.0f, 1.0f), 0, 0) : Vector3.zero);
-
+            
+            //set all children to acive -------------------------------------- << change tag of charachters interacted with and don't set them to active?
+            foreach (Transform child in toRemove.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
             toRemove.SetActive(true);
 
             pool.Remove(toRemove);
