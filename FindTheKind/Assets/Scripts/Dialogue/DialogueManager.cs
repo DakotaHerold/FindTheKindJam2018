@@ -34,9 +34,11 @@ public class DialogueManager : Singleton<DialogueManager> {
         optionButtons = transform.GetChild(0).GetComponentsInChildren<Button>();
         OffsetButtons();
         NamePanel.SetActive(false);
-        DialoguePanel.SetActive(false); 
+        DialoguePanel.SetActive(false);
+        NPC_PortraitPanel.SetActive(false);
+        PC_PortraitPanel.SetActive(false); 
         //Temp 
-        StartConversation(testDialogue); 
+        //StartConversation(testDialogue); 
     }
 
     private void Update()
