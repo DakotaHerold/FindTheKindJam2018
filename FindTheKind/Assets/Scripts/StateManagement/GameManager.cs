@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
-
-<<<<<<< HEAD
-    public const float LEVEL_TIME = 10; 
-=======
-    public const float LEVEL_TIME = 2;//120; 
->>>>>>> 65cf0bd3938feeee76a5515c12fee64e8cf0c6ea
+    
+    public const float LEVEL_TIME = 10;//120; 
     public const int SPAWN_INTERVAL = 5;
 
     bool isAllowedToSpawn = true; 
