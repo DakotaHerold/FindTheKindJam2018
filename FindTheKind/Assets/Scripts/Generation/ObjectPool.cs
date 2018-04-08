@@ -29,21 +29,20 @@ public class ObjectPool : MonoBehaviour
     {
         CreatePool(pooledPrefabs);
         
-        
-        /*
         //Create initial roads
-        if (pool.Count > 0)
+        if (!randomOffset && pool.Count > 0)
         {
             for (int i = 1; i <= 2; i++)
             {
                 GameObject toRemove = pool[Random.Range(0, pool.Count)];
 
                 toRemove.transform.position = spawnLocation.position + new Vector3(-11.5f * i, 0, 0);
+                toRemove.gameObject.tag = "temp";
                 toRemove.SetActive(true);
 
                 pool.Remove(toRemove);
             }
-        }*/
+        }
 
         GetObject();
     }

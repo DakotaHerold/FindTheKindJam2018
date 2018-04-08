@@ -10,6 +10,7 @@ TagManager:
   - Coin
   - Sidewalk
   - Tree
+  - temp
   layers:
   - Default
   - TransparentFX

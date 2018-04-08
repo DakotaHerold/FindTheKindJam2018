@@ -1869,6 +1869,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   speedChange: 2.5
+  slowestSpeed: 0
   screenEdge: -30
   parallaxLayers:
   - {fileID: 114292747046204876}
