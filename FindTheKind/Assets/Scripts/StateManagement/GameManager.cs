@@ -18,7 +18,8 @@ public class GameManager : Singleton<GameManager> {
     }
 
     private GAME_STATE gameState;
-    private DialogueManager dialogueManager;
+    [SerializeField]
+    public DialogueManager dialogueManager;
     private LevelManager levelManager;
     [SerializeField]
     private GameObject[] NPCs;
@@ -36,10 +37,9 @@ public class GameManager : Singleton<GameManager> {
     public int Level { get { return level; } }
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
         gameState = GAME_STATE.Title; // Title
         timer = LEVEL_TIME; 
-        dialogueManager = FindObjectOfType<DialogueManager>();
         levelManager = FindObjectOfType<LevelManager>();
         notTalkedTo = new List<GameObject>(NPCs);
         talkedTo = new List<GameObject>();

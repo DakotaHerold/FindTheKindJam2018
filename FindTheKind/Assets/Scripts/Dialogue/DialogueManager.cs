@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
 
-public class DialogueManager : Singleton<DialogueManager> {
+public class DialogueManager : MonoBehaviour {
     public float letterPause = 0.2f;
     public GameObject NamePanel;
     public GameObject DialoguePanel;
