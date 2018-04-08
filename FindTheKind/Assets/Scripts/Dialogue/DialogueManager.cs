@@ -32,7 +32,7 @@ public class DialogueManager : Singleton<DialogueManager> {
         boxText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
         NPC_Image = NPC_PortraitPanel.transform.GetChild(0).GetComponent<Image>(); 
         optionButtons = transform.GetChild(0).GetComponentsInChildren<Button>();
-        OffsetButtons();
+        OffsetButtonsInitial();
         NamePanel.SetActive(false);
         DialoguePanel.SetActive(false);
         NPC_PortraitPanel.SetActive(false);
@@ -53,7 +53,7 @@ public class DialogueManager : Singleton<DialogueManager> {
         
     }
 
-    void OffsetButtons()
+    void OffsetButtonsInitial()
     {
         int numButtons = optionButtons.Length; 
         Vector3 position = boxText.transform.position;
@@ -67,6 +67,23 @@ public class DialogueManager : Singleton<DialogueManager> {
             b.transform.position = position;
             position.x += offset;
             b.gameObject.SetActive(false); 
+        }
+    }
+
+    void OffsetButtonsOnChoice()
+    {
+        int numButtons = activeDialogue.choices.Count;
+        Vector3 position = boxText.transform.position;
+        RectTransform buttonTransform = optionButtons[0].gameObject.transform as RectTransform;
+        float offset = (buttonTransform.sizeDelta.x / numButtons);
+        position.x -= (offset * (numButtons / 2));
+        position.y -= buttonTransform.sizeDelta.y - 15;
+        offset *= 2;
+        foreach (Button b in optionButtons)
+        {
+            b.transform.position = position;
+            position.x += offset;
+            b.gameObject.SetActive(false);
         }
     }
 
@@ -147,7 +164,8 @@ public class DialogueManager : Singleton<DialogueManager> {
                     typeRoutine = TypeText(activeDialogue.playerChoice);
                     StartCoroutine(typeRoutine);
                     // TODO, make choice buttons 
-                    for(int iChoice = 0; iChoice < activeDialogue.choices.Count; ++iChoice)
+                    OffsetButtonsOnChoice(); 
+                    for (int iChoice = 0; iChoice < activeDialogue.choices.Count; ++iChoice)
                     {
                         optionButtons[iChoice].GetComponentInChildren<Text>().text = activeDialogue.choices[iChoice].playerChoice;
                         DialogueData choiceData = activeDialogue.choices[iChoice];

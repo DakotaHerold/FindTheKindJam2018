@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour {
     private Parallax[] parallaxLayers;
     [SerializeField]
     public SoundManager soundManager;
+    [SerializeField]
+    public HudStates hud;
 
     private void Start()
     {
@@ -24,6 +26,8 @@ public class LevelManager : MonoBehaviour {
     public void StartLevel()
     {
         player.State = CharacterState.Run;
+        hud.gameObject.SetActive(true);
+        hud.ShowHud();
 
         parallaxLayers[0].ScrollSpeed = slowestSpeed;
         parallaxLayers[1].ScrollSpeed = speedChange + slowestSpeed; // game space parallax 
