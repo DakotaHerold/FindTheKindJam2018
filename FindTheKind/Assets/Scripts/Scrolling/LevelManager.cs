@@ -34,6 +34,7 @@ public class LevelManager : MonoBehaviour {
 
     public void StartLevel()
     {
+        player.State = CharacterState.Run;
         parallaxLayers[0].ScrollSpeed = slowestSpeed;
         parallaxLayers[1].ScrollSpeed = speedChange + slowestSpeed; // game space parallax 
         parallaxLayers[2].ScrollSpeed = (2 * speedChange) + slowestSpeed;
@@ -42,7 +43,6 @@ public class LevelManager : MonoBehaviour {
 
     public void ShowHud()
     {
-        player.State = CharacterState.Run;
         hud.gameObject.SetActive(true);
         hud.ShowHud();
     }
