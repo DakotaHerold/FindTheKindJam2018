@@ -12,6 +12,7 @@ TagManager:
   - Tree
   - temp
   - Sky
+  - GameSpace
   layers:
   - Default
   - TransparentFX

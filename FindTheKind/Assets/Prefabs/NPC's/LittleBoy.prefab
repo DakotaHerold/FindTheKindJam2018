@@ -52,7 +52,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1979571680529118}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce69d4252670574c99c20afc9655dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  npcTransform: {fileID: 0}
 --- !u!114 &114543600977053406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0740da50c89f24b80146354c80548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueData: {fileID: 11400000, guid: cebb077002d4d6444b15948517f96bcb, type: 2}
+  dialogueData: {fileID: 11400000, guid: 19e92462aa280d64ba6fea7902103556, type: 2}
 --- !u!212 &212327649497504800
 SpriteRenderer:
   m_ObjectHideFlags: 1
