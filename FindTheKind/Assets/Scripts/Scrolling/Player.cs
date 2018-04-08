@@ -45,7 +45,7 @@ public class Player : MonoBehaviour {
             animMultiplier = 0.3f;
         }
 
-        UpdateAudio(Time.deltaTime, animMultiplier);
+        UpdateAudio(Time.deltaTime, 1f / animMultiplier);
         anim.SetFloat("SpeedMultiplier", animMultiplier);
     }
 
