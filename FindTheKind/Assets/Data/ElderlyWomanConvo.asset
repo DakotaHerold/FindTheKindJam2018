@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: ElderlyWomanConvo
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: (You see an old woman strugglig to carry her groceries.)
+  - line: (You see an old woman struggling to carry her groceries.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
