@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour {
 
         for(int i = 0; i < parallaxLayers.Length; i++)
         {
-            parallaxLayers[i].setScrollSpeed((i * speedChange) + slowestSpeed);
+            parallaxLayers[i].ScrollSpeed = (i * speedChange) + slowestSpeed;
         }
     }
 
@@ -37,7 +37,7 @@ public class LevelManager : MonoBehaviour {
 
         for (int i = 0; i < parallaxLayers.Length; i++)
         {
-            parallaxLayers[i].setScrollSpeed(0);
+            parallaxLayers[i].ScrollSpeed = 0;
         }
     }
 
