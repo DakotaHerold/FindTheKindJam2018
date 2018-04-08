@@ -9,24 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: MerchantConvoYes
+  m_Name: LittleGirlConvo
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: Sure thing!
+  - line: (You see a little girl wandering around alone. Is she lost?)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Thanks man, I appreciate the help!
-    source: 6
-    characterPortrait: {fileID: 21300000, guid: 95e43f9fff5b25c4da0a52ceb8856b1f,
-      type: 3}
-    moneyCost: 5
-  - line: (You continue on your way.)
-    source: 0
-    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
-      type: 3}
-    moneyCost: 0
-  playerChoice: Yes
-  isRoot: 0
-  choices: []
+  playerChoice: Maybe you should check up on her?
+  isRoot: 1
+  choices:
+  - {fileID: 11400000, guid: 1b80a9ec0fa50d244beacab1388eee74, type: 2}
+  - {fileID: 11400000, guid: cf979f2f3770fb546a25b368a36cf75a, type: 2}

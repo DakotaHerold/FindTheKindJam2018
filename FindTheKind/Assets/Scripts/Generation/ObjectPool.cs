@@ -18,7 +18,7 @@ public class ObjectPool : MonoBehaviour
 
     private Parallax parallax;
 
-    [SerializeField] private bool randomOffset, generateChunk;
+    [SerializeField] private bool randomOffset, generateChunk, sky;
 
     [SerializeField] private float scrollSpeed;
 
@@ -33,33 +33,40 @@ public class ObjectPool : MonoBehaviour
         parallax = GetComponentInParent<Parallax>();
         parallax.Initialize();
         CreatePool(pooledPrefabs);
-       
+
         //Create initial roads
         if (pool.Count > 0)
         {
             for (int i = 1; i <= 2; i++)
             {
-                GameObject toRemove;
-                if (!generateChunk)
+                if((sky && i== 1) || !sky)
                 {
-                    toRemove = pool[Random.Range(0, pool.Count)];
-                }
-                else
-                {
-                    toRemove = pool[0];
-                    toRemove.tag = "temp";
-                }
-                
-                toRemove.transform.position = spawnLocation.position + new Vector3(-11.5f * i, 0, 0);
-                toRemove.SetActive(true);
+                    GameObject toRemove;
+                    if (!generateChunk)
+                    {
+                        toRemove = pool[Random.Range(0, pool.Count)];
+                    }
+                    else
+                    {
+                        toRemove = pool[0];
+                        toRemove.tag = "temp";
+                    }
 
-                parallax.Tiles.Add(toRemove.GetComponent<TileScroll>());
+                    if (sky) { toRemove.transform.position = spawnLocation.position + new Vector3(-25.6f, 0, 0); }
+                    else { toRemove.transform.position = spawnLocation.position + new Vector3(-11.5f * i, 0, 0); }
 
-                pool.Remove(toRemove);
+                    toRemove.SetActive(true);
+
+                    parallax.Tiles.Add(toRemove.GetComponent<TileScroll>());
+
+                    pool.Remove(toRemove);
+                }
             }
         }
-
-        GetObject();
+        if (!sky)
+        {
+            GetObject();
+        }
     }
 
     public void CreatePool(List<PooledObject> pooled)
@@ -89,7 +96,7 @@ public class ObjectPool : MonoBehaviour
             {
                 child.gameObject.SetActive(true);
             }
-            toRemove.SetActive(true);
+            toRemove.SetActive(true);            
 
             pool.Remove(toRemove);
 

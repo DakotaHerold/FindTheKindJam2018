@@ -9,35 +9,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: YoungWomanConvoYes
+  m_Name: LittleBoyConvoYes
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: (You walk over and hear the man insulting the young woman.)
+  - line: Hey, are you ok? Do you need some help?
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Excuse me, is this man bothering you?
+  - line: I was playing with my friends and I scraped my knee. It hurts.
+    source: 4
+    characterPortrait: {fileID: 21300000, guid: 631096a6af512f64aacd6c143bf7b759,
+      type: 3}
+    moneyCost: 0
+  - line: (You happen to have a band-aid you can offer to the boy.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Yes, I was just talking on the phone and this man started telling me that
-      I don't belong here!
-    source: 2
-    characterPortrait: {fileID: 21300000, guid: 61fef11fd0edf0e40911eddab871236d,
-      type: 3}
-    moneyCost: 0
-  - line: (You scold the man and console the woman, hurrying on your way.)
+  - line: Here you go, this should help it feel better.
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Thanks you!
-    source: 2
-    characterPortrait: {fileID: 21300000, guid: 61fef11fd0edf0e40911eddab871236d,
+  - line: Thank you sir!
+    source: 4
+    characterPortrait: {fileID: 21300000, guid: 631096a6af512f64aacd6c143bf7b759,
       type: 3}
     moneyCost: 0
-  playerChoice: Help
+  playerChoice: Yes
   isRoot: 0
   choices: []

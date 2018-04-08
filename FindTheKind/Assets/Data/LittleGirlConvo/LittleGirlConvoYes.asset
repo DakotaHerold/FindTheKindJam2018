@@ -9,20 +9,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: MerchantConvoYes
+  m_Name: LittleGirlConvoYes
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: Sure thing!
+  - line: Hey, are you lost?
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Thanks man, I appreciate the help!
-    source: 6
-    characterPortrait: {fileID: 21300000, guid: 95e43f9fff5b25c4da0a52ceb8856b1f,
+  - line: Haha, no sir, I'm doing a scavenger hunt with my friends!
+    source: 5
+    characterPortrait: {fileID: 21300000, guid: fae4e7a2f579a284da9aed45ce1eca9b,
       type: 3}
-    moneyCost: 5
-  - line: (You continue on your way.)
+    moneyCost: 0
+  - line: (The girl frollicks away, but you're happy you made sure she was okay.)
+    source: 0
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
+    moneyCost: 0
+  - line: (You aren't sure someone else would've done the same.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}

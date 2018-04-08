@@ -15,8 +15,11 @@ MonoBehaviour:
   - line: (You see an elderly man trying to call people over for help, but no one
       does.)
     source: 0
-    characterPortrait: {fileID: 0}
+    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+      type: 3}
     moneyCost: 0
-  playerChoice: 
-  isRoot: 0
-  choices: []
+  playerChoice: Do you go over and help?
+  isRoot: 1
+  choices:
+  - {fileID: 11400000, guid: 83158fbecb42dba49b67fb1ae6e849f5, type: 2}
+  - {fileID: 11400000, guid: ad3dc256d8f6a1f469663f3d9d0b24e4, type: 2}

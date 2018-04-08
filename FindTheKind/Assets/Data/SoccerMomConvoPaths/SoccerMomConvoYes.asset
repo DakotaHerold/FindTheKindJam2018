@@ -9,20 +9,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: MerchantConvoYes
+  m_Name: SoccerMomConvoYes
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: Sure thing!
-    source: 0
-    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
+  - line: Thank you! These are for a daycare center I'm trying to start up!
+    source: 1
+    characterPortrait: {fileID: 21300000, guid: ee5249b158518ba468b2ddf2b399eb9f,
       type: 3}
     moneyCost: 0
-  - line: Thanks man, I appreciate the help!
-    source: 6
-    characterPortrait: {fileID: 21300000, guid: 95e43f9fff5b25c4da0a52ceb8856b1f,
+  - line: (She smiles at you before returning to trying to hand them out.)
+    source: 1
+    characterPortrait: {fileID: 21300000, guid: ee5249b158518ba468b2ddf2b399eb9f,
       type: 3}
-    moneyCost: 5
-  - line: (You continue on your way.)
+    moneyCost: 0
+  - line: (You feel a bit happier.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}

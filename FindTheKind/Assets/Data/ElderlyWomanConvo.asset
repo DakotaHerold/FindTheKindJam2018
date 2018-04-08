@@ -9,24 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: MerchantConvoYes
+  m_Name: ElderlyWomanConvo
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: Sure thing!
+  - line: (You see an old woman strugglig to carry her groceries.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Thanks man, I appreciate the help!
-    source: 6
-    characterPortrait: {fileID: 21300000, guid: 95e43f9fff5b25c4da0a52ceb8856b1f,
-      type: 3}
-    moneyCost: 5
-  - line: (You continue on your way.)
-    source: 0
-    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
-      type: 3}
-    moneyCost: 0
-  playerChoice: Yes
-  isRoot: 0
-  choices: []
+  playerChoice: Do you offer your help?
+  isRoot: 1
+  choices:
+  - {fileID: 11400000, guid: 825777ee79fd2574c80cc5a867e5bca7, type: 2}
+  - {fileID: 11400000, guid: 9933ba853b174a54d8e51925a370a837, type: 2}

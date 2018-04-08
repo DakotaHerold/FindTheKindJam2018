@@ -9,24 +9,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: MerchantConvoYes
+  m_Name: ElderlyManConvoYes
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: Sure thing!
+  - line: Excuse me sir, do you need help with something?
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Thanks man, I appreciate the help!
-    source: 6
-    characterPortrait: {fileID: 21300000, guid: 95e43f9fff5b25c4da0a52ceb8856b1f,
+  - line: Yes, thank you, I'm trying to get someone to help me read this map because
+      I've lost my glasses.
+    source: 10
+    characterPortrait: {fileID: 21300000, guid: 76718a9a5312dec418d8db11fcdc5966,
       type: 3}
-    moneyCost: 5
-  - line: (You continue on your way.)
+    moneyCost: 0
+  - line: (You find the man's destination and give him directions.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  playerChoice: Yes
+  - line: Thank you so much!
+    source: 10
+    characterPortrait: {fileID: 21300000, guid: 76718a9a5312dec418d8db11fcdc5966,
+      type: 3}
+    moneyCost: 0
+  playerChoice: Help
   isRoot: 0
   choices: []

@@ -9,24 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 225ffa778459b5646a452ab18dc7811f, type: 3}
-  m_Name: MerchantConvoYes
+  m_Name: LittleBoyConvo
   m_EditorClassIdentifier: 
   dialogueLines:
-  - line: Sure thing!
+  - line: (You see a boy sitting on the curb, crying. He seems to be alone.)
     source: 0
     characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
       type: 3}
     moneyCost: 0
-  - line: Thanks man, I appreciate the help!
-    source: 6
-    characterPortrait: {fileID: 21300000, guid: 95e43f9fff5b25c4da0a52ceb8856b1f,
-      type: 3}
-    moneyCost: 5
-  - line: (You continue on your way.)
-    source: 0
-    characterPortrait: {fileID: 21300000, guid: a812749fed842c44c954ba12d894b244,
-      type: 3}
-    moneyCost: 0
-  playerChoice: Yes
-  isRoot: 0
-  choices: []
+  playerChoice: Do you ask if he needs help?
+  isRoot: 1
+  choices:
+  - {fileID: 11400000, guid: 99b1ed9612ae37443a60ba79a5e9b98c, type: 2}
+  - {fileID: 11400000, guid: 2aa17fa1883bc0d48bb965e61f94a961, type: 2}
