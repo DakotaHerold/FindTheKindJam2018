@@ -24,9 +24,21 @@ public class Player : MonoBehaviour {
     private CharacterState currentState = CharacterState.Idle;
     private Animator anim;
 
+    [SerializeField]
+    private AnimationClip fortyRunClip;
+    [SerializeField]
+    private AnimationClip sixtyRunClip;
+
+    protected AnimatorOverrideController animatorOverrideController;
+
+    private int age = 20; 
+
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
+
+        animatorOverrideController = new AnimatorOverrideController(anim.runtimeAnimatorController);
+        anim.runtimeAnimatorController = animatorOverrideController;
     }
 	
 	// Update is called once per frame
@@ -184,6 +196,21 @@ public class Player : MonoBehaviour {
             {
                 moveSpeed = 0;
             }
+        }
+    }
+
+    public void UpdateCharacterAge()
+    {
+        age += 20; 
+        if(age > 20 && age < 60)
+        {
+            // 40s
+            animatorOverrideController["Walk"] = fortyRunClip;
+        }
+        else
+        {
+            // 60s 
+            animatorOverrideController["Walk"] = sixtyRunClip;
         }
     }
 

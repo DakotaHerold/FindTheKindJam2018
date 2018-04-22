@@ -120,13 +120,15 @@ MonoBehaviour:
   maxMoveSpeed: 5
   acceleration: 2.5
   decelerationMultiplier: 4
-  laneTime: 0.2
+  laneTime: 0.4
   laneHeight: 1.5
-  rightBound: 0
-  leftBound: -5
+  rightBound: -1
+  leftBound: -4
   soundManager: {fileID: 0}
   lane: 1
   stepClips: 010000000200000003000000
+  fortyRunClip: {fileID: 7400000, guid: a394dfbf3384f084f8794b4223660c69, type: 2}
+  sixtyRunClip: {fileID: 7400000, guid: 7c99a461415433543ac51a2a0ba8ccc9, type: 2}
 --- !u!212 &212590333874228912
 SpriteRenderer:
   m_ObjectHideFlags: 1

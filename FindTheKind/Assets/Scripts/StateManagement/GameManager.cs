@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
-    
+
+    [SerializeField]
+    public Player mainCharacter;
+
     public const float LEVEL_TIME = 20;//120; 
     public const int SPAWN_INTERVAL = 10;
 
@@ -151,7 +154,12 @@ public class GameManager : Singleton<GameManager> {
         timer = LEVEL_TIME;
         spawnTimer = 0f;
         level += 10;
-        if (level > 70)
+
+        if(level == 40 || level == 60)
+        {
+            mainCharacter.UpdateCharacterAge(); 
+        }
+        else if (level > 70)
         {
             // TODO Game Over
             EndGame();
