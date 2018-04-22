@@ -12,6 +12,9 @@ public class InputHandler : Singleton<InputHandler> {
     private bool interact; 
     public bool Interact { get { return interact; } }
 
+    private bool escape;
+    public bool Escape { get { return escape; } }
+
     // Rewired variables
     private int playerId = 0;
     private Rewired.Player player;
@@ -27,7 +30,7 @@ public class InputHandler : Singleton<InputHandler> {
 
         moveAxes = new Vector2(player.GetAxis("MoveHorizontal"), player.GetAxis("MoveVertical"));
         interact = player.GetButtonDown("Interact");
-        
+        escape = player.GetButtonDown("Escape");
     }
 }
 
