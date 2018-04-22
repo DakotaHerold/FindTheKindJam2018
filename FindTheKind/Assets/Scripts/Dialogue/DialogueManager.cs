@@ -118,7 +118,8 @@ public class DialogueManager : MonoBehaviour {
 
     // End Game
     private List<DialogueData.DialoguePiece> peopleSpokenTo = new List<DialogueData.DialoguePiece>();
-    private bool inFinalDialogue = false; 
+    private bool inFinalDialogue = false;
+    private bool playerThanked = false; 
 
     private void Start()
     {
@@ -427,6 +428,9 @@ public class DialogueManager : MonoBehaviour {
 
     void ThanksForPlayingDialogue()
     {
+        
+        playerThanked = true; 
+
         // Open panels 
         NamePanel.SetActive(true);
         DialoguePanel.SetActive(true);
@@ -456,8 +460,26 @@ public class DialogueManager : MonoBehaviour {
 
     void CycleEndDialogue()
     {
-        if(peopleSpokenTo.Count < 1)
+        if (playerThanked)
         {
+            //If we are running in a standalone build of the game
+#if UNITY_STANDALONE
+            //Quit the application
+            Application.Quit();
+#endif
+
+            //If we are running in the editor
+#if UNITY_EDITOR
+            //Stop playing the scene
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+            return;
+        }
+
+
+        if (peopleSpokenTo.Count < 1)
+        {
+            playerThanked = true; 
             activeSpeaker = DialogueSource.Business_Man;
             NPC_PortraitPanel.SetActive(false);
             PC_PortraitPanel.SetActive(true);
