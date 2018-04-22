@@ -168,8 +168,8 @@ public class DialogueManager : MonoBehaviour {
         offset += 10; 
         foreach (Button b in optionButtons)
         {
-            b.transform.position = position;
-            position.x += offset;
+            //b.transform.position = position;
+            //position.x += offset;
             b.gameObject.SetActive(false); 
         }
     }
@@ -185,8 +185,8 @@ public class DialogueManager : MonoBehaviour {
         offset *= 2;
         foreach (Button b in optionButtons)
         {
-            b.transform.position = position;
-            position.x += offset;
+            //b.transform.position = position;
+            //position.x += offset;
             b.gameObject.SetActive(false);
         }
     }
