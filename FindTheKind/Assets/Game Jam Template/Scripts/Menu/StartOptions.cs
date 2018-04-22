@@ -58,7 +58,7 @@ public class StartOptions : MonoBehaviour {
 			//Use invoke to delay calling of LoadDelayed by half the length of fadeColorAnimationClip
 			Invoke ("LoadDelayed", menuSettingsData.menuFadeTime);
 
-            StartCoroutine(FadeCanvasGroupAlpha(0f, 1f, fadeOutImageCanvasGroup));
+            //StartCoroutine(FadeCanvasGroupAlpha(0f, 1f, fadeOutImageCanvasGroup));
 
         } 
 
