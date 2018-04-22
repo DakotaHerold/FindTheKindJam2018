@@ -115,7 +115,10 @@ public class ObjectPool : MonoBehaviour
             gameObj.SetActive(false);
             pool.Add(gameObj);
         }
-        
-        parallax.Tiles.Remove(gameObj.GetComponent<TileScroll>());
+
+        TileScroll tS = gameObj.GetComponent<TileScroll>();
+        tS.clearNPCs(); 
+
+        parallax.Tiles.Remove(tS);
     }
 }

@@ -28,4 +28,17 @@ public class TileScroll : MonoBehaviour {
         Debug.Log("No spawnpoint");
         return false;
     }
+
+    public void clearNPCs()
+    {
+        if (npcTransform != null)
+        {
+            for (int i = 0; i < npcTransform.childCount; ++i)
+            {
+                GameObject childGO = npcTransform.transform.GetChild(i).gameObject;
+                if (childGO.GetComponent<Person>() != null)
+                    Destroy(childGO);
+            }
+        }
+    }
 }

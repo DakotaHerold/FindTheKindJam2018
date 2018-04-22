@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour {
     public float letterPause = 0.2f;
+    public SoundManager soundManager;
     public GameObject NamePanel;
     public GameObject DialoguePanel;
     public GameObject PC_PortraitPanel; 
@@ -544,8 +545,8 @@ public class DialogueManager : MonoBehaviour {
         foreach (char letter in message.ToCharArray())
         {
             boxText.text += letter;
-            //if (sound)
-            //    audio.PlayOneShot(sound);
+            if (soundManager != null)
+                soundManager.PlayTypeSound(); 
             yield return 0;
             yield return new WaitForSeconds(letterPause);
         }
